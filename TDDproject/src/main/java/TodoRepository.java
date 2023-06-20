@@ -3,11 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TodoRepository {
-    private final String dbName;
-    private Connection connection;
+    private final Connection connection;
 
     public TodoRepository() throws SQLException {
-        this.dbName = "todo_app_db";
+        String dbName = "todo_app_db";
         this.connection = DriverManager.getConnection("jdbc:sqlite:" + dbName + ".db");
     }
 
@@ -25,7 +24,7 @@ public class TodoRepository {
 
     public Todo readTodoById(int id) throws SQLException {
 
-        String sql = "SELECT * FROM " + this.dbName + " WHERE id LIKE ?";
+        String sql = "SELECT * FROM todo WHERE id LIKE ?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, "%" + id + "%");
@@ -59,7 +58,7 @@ public class TodoRepository {
 
     public List<Todo> getAllTodos() throws SQLException {
 
-        String sql = "SELECT * FROM " + this.dbName + " WHERE id LIKE ?";
+        String sql = "SELECT * FROM todo WHERE id LIKE ?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, "%" + "*" + "%");
@@ -75,7 +74,7 @@ public class TodoRepository {
             todos.add(new Todo(resultSet.getInt("id"),
                     resultSet.getString("text"),
                     resultSet.getInt("done"),
-                    resultSet.getInt("asignedTo")
+                    resultSet.getInt("assignedTo")
             ));
         }
         if (todos.isEmpty()) {
