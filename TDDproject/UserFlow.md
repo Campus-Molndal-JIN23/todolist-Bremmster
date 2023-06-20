@@ -7,6 +7,7 @@ flowchart TD
     C -->|U| F{Update todo}
     F --> F1[update text]
     F --> F2[mark as done]
+    F --> F3[assignTo]
     C --> |D|G[Delete todo]
     C --> |L|H[List todos]
 ```
