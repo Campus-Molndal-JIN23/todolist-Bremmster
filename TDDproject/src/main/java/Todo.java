@@ -43,4 +43,14 @@ public class Todo {
     public void setAssignedTo(int assignedTo) {
         this.assignedTo = assignedTo;
     }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", done=" + done +
+                ", assignedTo=" + assignedTo +
+                '}';
+    }
 }
