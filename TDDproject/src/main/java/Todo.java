@@ -5,6 +5,17 @@ public class Todo {
     private int done;
     private int assignedTo;
 
+    public Todo(String text, int done) {
+        this.text = text;
+        this.done = done;
+    }
+
+    public Todo(String text, int done, int assignedTo) {
+        this.text = text;
+        this.done = done;
+        this.assignedTo = assignedTo;
+    }
+
     public Todo(int id, String text, int done, int assignedTo) {
         this.id = id;
         this.text = text;

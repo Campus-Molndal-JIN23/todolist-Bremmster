@@ -1,11 +1,13 @@
+import java.sql.SQLException;
+
 public class TodoApp {
 
 
-    public TodoApp() {
+    public TodoApp() throws SQLException {
         mainMenu();
     }
 
-    private void mainMenu() {
+    private void mainMenu() throws SQLException {
         MenuTextManager.mainMenu();
         switch (UserInputManager.menuChoice(1, 2)) {
             case 1 -> todoMenu();
@@ -14,7 +16,7 @@ public class TodoApp {
         }
     }
 
-    private void todoMenu() {
+    private void todoMenu() throws SQLException {
         MenuTextManager.todoMenu();
         switch (UserInputManager.menuChoice(1, 5)) {
             case 1 -> createTodo();
@@ -31,12 +33,16 @@ public class TodoApp {
 
     }
 
-    private void readTodo() {
-
+    private void readTodo() throws SQLException {
+        TodoDatabase db = new TodoDatabase();
+        Todo todo = db.readTodoById(1);
+        System.out.println(todo.toString());
     }
 
-    private void createTodo() {
-
+    private void createTodo() throws SQLException {
+        Todo todo = new Todo("Test text", 0);
+        TodoDatabase db = new TodoDatabase();
+        db.createTodo(todo);
     }
 
     private void updateTodo() {

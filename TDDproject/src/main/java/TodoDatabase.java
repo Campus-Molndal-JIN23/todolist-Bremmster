@@ -2,15 +2,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoRepository {
+public class TodoDatabase implements TodoDAO{
+
     private final Connection connection;
 
-    public TodoRepository() throws SQLException {
+    public TodoDatabase() throws SQLException {
         String dbName = "todo_app_db";
         this.connection = DriverManager.getConnection("jdbc:sqlite:" + dbName + ".db");
     }
 
 
+    @Override
     public void createTodo(Todo todo) throws SQLException {
 
         String sql = "INSERT INTO todo(text,done,assignedTo) VALUES(?,?,?)";
@@ -22,6 +24,7 @@ public class TodoRepository {
         preparedStatement.execute();
     }
 
+    @Override
     public Todo readTodoById(int id) throws SQLException {
 
         String sql = "SELECT * FROM todo WHERE id LIKE ?";
@@ -37,6 +40,7 @@ public class TodoRepository {
         );
     }
 
+    @Override
     public void updateTodo(Todo todo) throws SQLException {
 
         String sql = "UPDATE todo SET text = ?, done = ?, assignedTo = ? WHERE id = " + todo.getId() + ";";
@@ -47,6 +51,7 @@ public class TodoRepository {
         preparedStatement.execute();
     }
 
+    @Override
     public void deleteTodo(Todo todo) throws SQLException {
 
         String sql = "DELETE FROM todo WHERE id = ?";
@@ -56,6 +61,7 @@ public class TodoRepository {
 
     }
 
+    @Override
     public List<Todo> getAllTodos() throws SQLException {
 
         String sql = "SELECT * FROM todo WHERE id LIKE ?";

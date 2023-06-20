@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="todo_app_db.db" uuid="1e21cb11-227e-46d0-b3b6-ab6dfa5c4e3d">
+    <data-source source="LOCAL" name="todo_app_db.db" uuid="9c83f2cd-614d-449b-ae8b-01b438b9bb53">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/TDDproject/database/todo_app_db.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/todo_app_db.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
