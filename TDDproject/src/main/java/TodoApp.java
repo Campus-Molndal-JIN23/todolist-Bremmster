@@ -27,17 +27,42 @@ public class TodoApp {
         }
     }
 
+    private void deleteTodo() {
+
+    }
+
+    private void readTodo() {
+
+    }
+
+    private void createTodo() {
+
+    }
+
     private void updateTodo() {
         MenuTextManager.updateMenu();
         switch (UserInputManager.menuChoice(1, 3)) {
             case 1 -> markDone();
             case 2 -> changeText();
-            case 3 -> assingToUser();
+            case 3 -> assignToUser();
             case 9 -> {
                 return;
             }
         }
     }
+
+    private void assignToUser() {
+
+    }
+
+    private void changeText() {
+
+    }
+
+    private void markDone() {
+
+    }
+
     private void userMenu() {
         // todo
     }
