@@ -3,24 +3,31 @@ import java.util.Scanner;
 
 public class UserInputManager {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private final static Scanner scanner = new Scanner(System.in);
 
 
     public static int menuChoice(int min, int max) {
         // todo remove static?
-        int usrChoice;
+        int input = getInt();
+        if (input >= min && input <= max || input == 9) {
+            return input;
+        } else {
+            return menuChoice(min, max);
+        }
+    }
 
+    private static int getInt() {
+        int input;
         while (true) {
             try {
-                usrChoice = Integer.parseInt(scanner.nextLine());
-                // todo check i this works
-                if (usrChoice >= min && usrChoice <= max || usrChoice == 9) break;
+                input = Integer.parseInt(scanner.nextLine());
+                break;
             } catch (InputMismatchException e) {
                 System.out.print("Not an Integer\nPleaser enter Integer: ");
-                scanner.nextLine(); // to eat the line feed that nextInt misses
+                getInt();
             }
         }
-        return usrChoice;
+        return input;
     }
 
     public String getString() {
