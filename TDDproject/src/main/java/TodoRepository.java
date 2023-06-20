@@ -8,10 +8,22 @@ public class TodoRepository {
 
     public TodoRepository() throws SQLException {
         this.dbName = "todo_app_db";
-        connection = DriverManager.getConnection("jdbc:sqlite:" + dbName + ".db");
+        this.connection = DriverManager.getConnection("jdbc:sqlite:" + dbName + ".db");
     }
 
-    public Todo getTodoById(int id) throws SQLException {
+
+    public void createTodo(Todo todo) throws SQLException {
+
+        String sql = "INSERT INTO todo(text,done,assignedTo) VALUES(?,?,?)";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, todo.getText());
+        preparedStatement.setInt(2, todo.getDone());
+        preparedStatement.setInt(3, todo.getAssignedTo());
+        preparedStatement.execute();
+    }
+
+    public Todo readTodoById(int id) throws SQLException {
 
         String sql = "SELECT * FROM " + this.dbName + " WHERE id LIKE ?";
 
@@ -24,6 +36,25 @@ public class TodoRepository {
                 resultSet.getInt("done"),
                 resultSet.getInt("assignedTo")
         );
+    }
+
+    public void updateTodo(Todo todo) throws SQLException {
+
+        String sql = "UPDATE todo SET text = ?, done = ?, assignedTo = ? WHERE id = " + todo.getId() + ";";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, todo.getText());
+        preparedStatement.setInt(2, todo.getDone());
+        preparedStatement.setInt(3, todo.getAssignedTo());
+        preparedStatement.execute();
+    }
+
+    public void deleteTodo(Todo todo) throws SQLException {
+
+        String sql = "DELETE FROM todo WHERE id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, todo.getId());
+        preparedStatement.execute();
+
     }
 
     public List<Todo> getAllTodos() throws SQLException {
@@ -52,5 +83,4 @@ public class TodoRepository {
         }
         return todos;
     }
-
 }
