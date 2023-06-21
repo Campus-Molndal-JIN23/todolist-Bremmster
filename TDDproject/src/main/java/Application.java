@@ -4,12 +4,13 @@ public class Application {
 
     private TodoFacade todoFacade;
 
-    public Application(TodoFacade todoFacade) throws SQLException {
+    public Application(TodoFacade todoFacade) {
+
         this.todoFacade = todoFacade;
         mainMenu();
     }
 
-    private void mainMenu() throws SQLException {
+    private void mainMenu() {
         while (true) {
             TextManager.mainMenu();
             switch (UserInputManager.menuChoice(1, 2)) {
@@ -35,7 +36,7 @@ public class Application {
                 }
                 case 4 -> {
                     TextManager.indexOfTodo("delete");
-                    todoFacade.deleteTodo();
+                    todoFacade.deleteTodo(UserInputManager.getInt());
                 }
                 case 9 -> {
                     return;
@@ -48,26 +49,17 @@ public class Application {
         while (true) {
             TextManager.updateMenu();
             switch (UserInputManager.menuChoice(1, 3)) {
-                case 1 -> todo.markDone();
-                case 2 -> todo.changeText();
-                case 3 -> assignToUser();
+                case 1 -> todoFacade.markDone(todo);
+                case 2 -> {
+                    TextManager.todoNewText();
+                    todoFacade.changeText(todo, UserInputManager.getString());
+                }
+                case 3 -> todoFacade.assignToUser();
                 case 9 -> {
                     return;
                 }
             }
         }
-    }
-
-    private void assignToUser() {
-
-    }
-
-    private void changeText() {
-
-    }
-
-    private void markDone() {
-
     }
 
     private void userMenu() {

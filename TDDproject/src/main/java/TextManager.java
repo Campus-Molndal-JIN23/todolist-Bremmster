@@ -34,7 +34,7 @@ public class TextManager {
         System.out.println("+---------------------------------------+");
         System.out.println("| Update todo                           |");
         System.out.println("+---------------------------------------+");
-        System.out.println("| 1) Mark as done                       |");
+        System.out.println("| 1) Toggle done/ not done              |");
         System.out.println("| 2) Change text                        |");
         System.out.println("| 3) Assign to other user               |");
         System.out.println("| 9) goto overhead menu                 |");
@@ -43,6 +43,9 @@ public class TextManager {
 
     public static void indexOfTodo(String msg) {
         System.out.println("index of todo to " + msg);
+    }
+    public static void todoNewText() {
+        System.out.println("set new text :");
     }
 
     public void userMenu() {

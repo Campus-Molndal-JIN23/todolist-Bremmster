@@ -30,7 +30,7 @@ public class UserInputManager {
         return input;
     }
 
-    public String getString() {
+    public static String getString() {
         return scanner.nextLine();
         // todo try catch
     }
