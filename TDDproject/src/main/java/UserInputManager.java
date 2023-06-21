@@ -16,7 +16,7 @@ public class UserInputManager {
         }
     }
 
-    private static int getInt() {
+    public static int getInt() {
         int input;
         while (true) {
             try {

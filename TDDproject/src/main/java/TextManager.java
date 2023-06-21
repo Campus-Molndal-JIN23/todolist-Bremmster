@@ -1,4 +1,4 @@
-public class MenuTextManager {
+public class TextManager {
 
 
     public void welcome() {
@@ -14,6 +14,7 @@ public class MenuTextManager {
         System.out.println("| 9) Exit                               |");
         System.out.print("Enter a option: ");
     }
+
     public static void todoMenu() {
         System.out.println("+---------------------------------------+");
         System.out.println("| TODO                                  |");
@@ -38,6 +39,10 @@ public class MenuTextManager {
         System.out.println("| 3) Assign to other user               |");
         System.out.println("| 9) goto overhead menu                 |");
         System.out.print("Enter a option: ");
+    }
+
+    public static void indexOfTodo(String msg) {
+        System.out.println("index of todo to " + msg);
     }
 
     public void userMenu() {
