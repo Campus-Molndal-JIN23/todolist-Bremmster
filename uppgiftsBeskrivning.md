@@ -103,7 +103,7 @@ Förväntad funktionalitet:
 * [x] Fullt fungerande tester genom CI på Github
 * [x]  JavaFX (frivilligt)
 * [x] Todo ska existera i en databas, antingen MongoDB eller SQLite.
-* [ ] Ni ska använda JUnit5, Mockito samt JSON In Java.
+* [x] Ni ska använda JUnit5, Mockito I Java.
 * [x] Ni ska använda Maven för att bygga ert projekt.
 * [x] Ni ska använda Github Actions för att testa ert projekt.
 

@@ -16,18 +16,19 @@ class TodoFacadeTest {
     //TodoFacade mockFacade;
 
     @BeforeEach
-    void setUp() throws SQLException {
+    void setUp() {
         mockDb = mock(TodoDatabase.class);
         //  mockFacade = mock(TodoFacade.class);
         sut = new TodoFacade(mockDb);
 
         when(mockDb.readTodoById(1)).thenReturn(new Todo(1, "Mockat testobjekt", 0, 0));
         when(mockDb.readTodoById(2)).thenReturn(new Todo(2, "Avslutad todo", 1, 0));
+        when(mockDb.readTodoById(3)).thenReturn(null);
 
     }
 
     @Test
-    void testCreateTodo() throws SQLException {
+    void testCreateTodo()  {
         // Arrange
         sut.createTodo(new Todo(1, "Mockat testobjekt", 0, 0));
 
@@ -90,8 +91,8 @@ class TodoFacadeTest {
     void deleteTodo() {
         // Arrange
         // Act
-        sut.deleteTodo(1);
-        Todo actual = sut.readTodo(1);
+        sut.deleteTodo(3);
+        Todo actual = sut.readTodo(3);
         // Assert
         assertNull(actual);
     }
