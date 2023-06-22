@@ -20,7 +20,7 @@ class TodoDatabaseTest {
     @Test
     public void readTodoByInt() {
         // arrange
-        Todo expected = new Todo(1, "Test text", 1, 0);
+        Todo expected = new Todo(1, "Test text", 0, 0);
         // act
         Todo actual;
 
@@ -36,7 +36,7 @@ class TodoDatabaseTest {
     @Test
     public void readTodoByText() {
         // arrange
-        Todo expected = new Todo(1, "Test text", 1, 0);
+        Todo expected = new Todo(1, "Test text", 0, 0);
         // act
         Todo actual;
 
