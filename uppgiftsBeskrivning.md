@@ -30,7 +30,7 @@
 	numbering=true
 	autoSave=true
 	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc --># Enskild inlämningsuppgift Todo
+<!-- /vscode-markdown-toc --># Enskild inlämningsuppgift org.campusmolndal.todo.Todo
 
 ##  1. <a name='Innehll'></a>Innehåll
 
@@ -102,7 +102,7 @@ Förväntad funktionalitet:
 * [ ] Fullt fungerande mockning av beroenden i era tester.
 * [x] Fullt fungerande tester genom CI på Github
 * [x]  JavaFX (frivilligt)
-* [x] Todo ska existera i en databas, antingen MongoDB eller SQLite.
+* [x] org.campusmolndal.todo.Todo ska existera i en databas, antingen MongoDB eller SQLite.
 * [x] Ni ska använda JUnit5, Mockito I Java.
 * [x] Ni ska använda Maven för att bygga ert projekt.
 * [x] Ni ska använda Github Actions för att testa ert projekt.
@@ -125,7 +125,7 @@ Skapa en TODO applikation som kan hantera TODO. Ni ska kunna skapa, läsa ut, re
 	</tr>
     <tr>
         <td>Class namn</td>
-        <td>Todo</td>
+        <td>org.campusmolndal.todo.Todo</td>
         <td>User</td>
     </tr>
 	<tr>
@@ -226,7 +226,7 @@ _Möts inte detta kriteriet så är man underkänd per automatik!_
     </tr>
     <tr>
         <td>Mocka bort externa beroenden (ex databas)</td>
-        <td>Todo klassen</td>
+        <td>oTodo klassen</td>
         <td>User klassen</td>
     </tr>
     <tr>

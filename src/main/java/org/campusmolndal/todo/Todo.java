@@ -1,10 +1,12 @@
+package org.campusmolndal.todo;
+
 import java.util.List;
 
 public class Todo {
 
     private int id;
     private String text;
-    private int done; // 1 = done, 0 = not done
+    private int done; // SQLite can't handle booleans 1 = done, 0 = not done
     private int assignedTo;
 
     public Todo(String text) {
@@ -58,7 +60,7 @@ public class Todo {
         return "Todo{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", done=" + done +
+                ", done=" + (done == 1) + // ternary if to show done with true/false
                 ", assignedTo=" + assignedTo +
                 '}';
     }

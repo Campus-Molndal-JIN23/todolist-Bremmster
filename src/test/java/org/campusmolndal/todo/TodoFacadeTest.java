@@ -1,7 +1,11 @@
+package org.campusmolndal.todo;
+
+import org.campusmolndal.todo.Todo;
+import org.campusmolndal.todo.TodoDatabase;
+import org.campusmolndal.todo.TodoFacade;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,12 +17,12 @@ class TodoFacadeTest {
     TodoFacade sut;
     TodoDatabase mockDb;
 
-    //TodoFacade mockFacade;
+    //org.campusmolndal.todo.TodoFacade mockFacade;
 
     @BeforeEach
     void setUp() {
         mockDb = mock(TodoDatabase.class);
-        //  mockFacade = mock(TodoFacade.class);
+        //  mockFacade = mock(org.campusmolndal.todo.TodoFacade.class);
         sut = new TodoFacade(mockDb);
 
         when(mockDb.readTodoById(1)).thenReturn(new Todo(1, "Mockat testobjekt", 0, 0));

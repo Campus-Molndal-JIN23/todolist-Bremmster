@@ -1,8 +1,11 @@
+import org.campusmolndal.todo.Todo;
+import org.campusmolndal.todo.TodoFacade;
+
 import java.util.List;
 
 public class Application {
 
-    private TodoFacade todoFacade;
+    private final TodoFacade todoFacade;
 
     public Application(TodoFacade todoFacade) {
 
@@ -60,7 +63,7 @@ public class Application {
     private void updateTodo(Todo todo) {
         while (true) {
             TodoViewer.viewTodo(todo);
-            TextManager.updateMenu(); // todo lägg till att objektet visas i menyn
+            TextManager.updateMenu();
             switch (UserInputManager.menuChoice(1, 3)) {
                 case 1 -> todoFacade.markDone(todo);
                 case 2 -> {

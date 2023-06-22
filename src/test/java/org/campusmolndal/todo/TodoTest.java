@@ -1,3 +1,6 @@
+package org.campusmolndal.todo;
+
+import org.campusmolndal.todo.Todo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -63,7 +66,7 @@ class TodoTest {
         String expected = "Todo{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", done=" + done +
+                ", done=" + false +
                 ", assignedTo=" + assignedTo +
                 '}';
         // assert

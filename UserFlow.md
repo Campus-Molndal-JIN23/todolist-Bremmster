@@ -1,8 +1,8 @@
 ``` mermaid
 flowchart TD
-    A[Start] -->|Select User| B(Todo Menu)
+    A[Start] -->|Select User| B(org.campusmolndal.todo.Todo Menu)
     B -->C{User input}
-    C -->|C| D[Create Todo]
+    C -->|C| D[Create org.campusmolndal.todo.Todo]
     C -->|R| E[Read todo]
     C -->|U| F{Update todo}
     F --> F1[update text]

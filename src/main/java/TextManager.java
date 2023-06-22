@@ -1,12 +1,9 @@
 public class TextManager {
 
 
-    public static void thisDontExist() {
-        System.out.println("No todo with that index");
-    }
 
     public void welcome() {
-        System.out.println("Welcome to Todo list app");
+        System.out.println("Welcome to todo list app");
     }
 
     public static void mainMenu() {
@@ -16,6 +13,7 @@ public class TextManager {
         System.out.println("| 1) Todo                               |");
         System.out.println("| 2) User                               |");
         System.out.println("| 9) Exit                               |");
+        System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");
     }
 
@@ -58,6 +56,9 @@ public class TextManager {
 
     public static void notValidChoice() {
         System.out.println("Not a valid choice. Better luck next time");
+    }
+    public static void thisDontExist() {
+        System.out.println("No todo with that index");
     }
 
     public void userMenu() {

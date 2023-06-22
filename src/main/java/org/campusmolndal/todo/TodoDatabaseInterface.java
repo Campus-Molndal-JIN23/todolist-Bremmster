@@ -1,3 +1,5 @@
+package org.campusmolndal.todo;
+
 import java.util.List;
 
 public interface TodoDatabaseInterface {
