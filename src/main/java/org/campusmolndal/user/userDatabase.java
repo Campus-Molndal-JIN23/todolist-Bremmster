@@ -1,3 +1,5 @@
+package org.campusmolndal.user;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

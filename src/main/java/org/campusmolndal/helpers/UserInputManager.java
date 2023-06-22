@@ -1,4 +1,7 @@
-import java.util.InputMismatchException;
+package org.campusmolndal.helpers;
+
+import org.campusmolndal.helpers.TextManager;
+
 import java.util.Scanner;
 
 public class UserInputManager {

@@ -1,5 +1,13 @@
+package org.campusmolndal;
+import org.campusmolndal.helpers.TextManager;
+import org.campusmolndal.helpers.UserInputManager;
 import org.campusmolndal.todo.Todo;
 import org.campusmolndal.todo.TodoFacade;
+import org.campusmolndal.todo.TodoViewer;
+import org.campusmolndal.user.User;
+import org.campusmolndal.user.UserFacade;
+import org.campusmolndal.user.UserViewer;
+
 
 import java.util.List;
 

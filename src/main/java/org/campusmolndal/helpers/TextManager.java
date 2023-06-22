@@ -1,3 +1,5 @@
+package org.campusmolndal.helpers;
+
 public class TextManager {
 
 

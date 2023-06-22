@@ -1,5 +1,5 @@
-import org.campusmolndal.todo.Todo;
-import org.campusmolndal.todo.TodoDatabase;
+package org.campusmolndal.todo;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

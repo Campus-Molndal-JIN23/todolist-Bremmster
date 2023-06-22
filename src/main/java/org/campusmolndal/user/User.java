@@ -1,3 +1,4 @@
+package org.campusmolndal.user;
 
 public class User {
 
@@ -37,7 +38,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "org.campusmolndal.user.User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
