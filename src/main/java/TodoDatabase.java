@@ -2,7 +2,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoDatabase implements TodoDAO {
+public class TodoDatabase implements TodoDatabaseInterface {
 
     private final Connection connection;
 
