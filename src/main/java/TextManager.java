@@ -1,6 +1,10 @@
 public class TextManager {
 
 
+    public static void thisDontExist() {
+        System.out.println("No todo with that index");
+    }
+
     public void welcome() {
         System.out.println("Welcome to Todo list app");
     }

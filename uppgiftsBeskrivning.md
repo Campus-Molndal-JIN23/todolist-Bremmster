@@ -80,13 +80,13 @@ Att ni ska sy ihop alla kunskaperna ni har lärt er under kursens gång och visa
 
 En TODO applikation som kan:
 
-- Skapa nya TODO
-- Visa alla TODO från databasen
-- Visa en enskild TODO från databasen
-- Uppdatera en TODO i databasen
-    - Uppdatera texten
-    - Uppdatera om en todo är klar eller inte
-- Radera TODO från er databas
+- [x] Skapa nya TODO
+- [x] Visa alla TODO från databasen
+- [x] Visa en enskild TODO från databasen
+- [x] Uppdatera en TODO i databasen
+    - [x] Uppdatera texten
+    - [x] Uppdatera om en todo är klar eller inte
+- [x] Radera TODO från er databas
 - Skapa en användare
 - Visa alla användare
 - Visa en enskild användare
@@ -101,7 +101,7 @@ Förväntad funktionalitet:
 * [ ] Fullt fungerande tester för er applikation.
 * [ ] Fullt fungerande mockning av beroenden i era tester.
 * [x] Fullt fungerande tester genom CI på Github
-* [ ] Fullt fungerande JavaFX applikation som visar upp allt på ett snyggt sätt (frivilligt)
+* [x]  JavaFX (frivilligt)
 * [x] Todo ska existera i en databas, antingen MongoDB eller SQLite.
 * [ ] Ni ska använda JUnit5, Mockito samt JSON In Java.
 * [x] Ni ska använda Maven för att bygga ert projekt.

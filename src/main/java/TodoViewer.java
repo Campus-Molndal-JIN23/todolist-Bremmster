@@ -5,7 +5,7 @@ public class TodoViewer {
         if (todo.getId() != 0) {
             System.out.println(todo.toString());
         } else {
-
+            TextManager.thisDontExist();
         }
     }
 }
