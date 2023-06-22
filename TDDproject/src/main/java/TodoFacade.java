@@ -5,7 +5,6 @@ public class TodoFacade {
     private final TodoDatabase db;
 
     public TodoFacade() {
-
         this.db = new TodoDatabase();
     }
 
@@ -19,25 +18,19 @@ public class TodoFacade {
     }
 
     public Todo searchTodoByText(Todo todo) {
-
         todo = db.readTodoById(todo);
-
         return todo;
     }
 
     public Todo readTodo(int index) {
         Todo todo;
-
         todo = db.readTodoById(index);
-
         return todo;
     }
 
     public List<Todo> list() {
         List<Todo> todos = null;
-
         todos = db.getAllTodos();
-
         return todos;
     }
 
@@ -62,9 +55,7 @@ public class TodoFacade {
 
     public void deleteTodo(int index) {
         Todo todo = readTodo(index);
-
         db.deleteTodo(todo);
-
     }
 
 

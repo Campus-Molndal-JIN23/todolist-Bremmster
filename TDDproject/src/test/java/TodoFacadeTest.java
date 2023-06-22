@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -19,7 +18,7 @@ class TodoFacadeTest {
     @BeforeEach
     void setUp() throws SQLException {
         mockDb = mock(TodoDatabase.class);
-      //  mockFacade = mock(TodoFacade.class);
+        //  mockFacade = mock(TodoFacade.class);
         sut = new TodoFacade(mockDb);
 
         when(mockDb.readTodoById(1)).thenReturn(new Todo(1, "Mockat testobjekt", 0, 0));
@@ -99,5 +98,13 @@ class TodoFacadeTest {
 
     @Test
     void assignToUser() {
+        sut.assignToUser();
+
+    }
+
+    @Test
+    void testConstructor() {
+
+        assertNotNull(new TodoFacade());
     }
 }
