@@ -38,7 +38,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "org.campusmolndal.user.User{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
