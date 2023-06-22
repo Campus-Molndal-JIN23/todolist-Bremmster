@@ -10,7 +10,8 @@ public class TodoFacade {
         this.db = new TodoDatabase();
     }
 
-    public TodoFacade(TodoDatabase db) { // this constructor exists to enable testing
+    public TodoFacade(TodoDatabase db) {
+        // this constructor exists to enable testing
         this.db = db;
     }
 
