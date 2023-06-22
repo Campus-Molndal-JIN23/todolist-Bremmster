@@ -11,6 +11,7 @@ public class UserInputManager {
         if (input >= min && input <= max || input == 9) {
             return input;
         } else {
+            TextManager.notValidChoice();
             return menuChoice(min, max);
         }
     }
@@ -21,9 +22,8 @@ public class UserInputManager {
             try {
                 input = Integer.parseInt(scanner.nextLine());
                 break;
-            } catch (InputMismatchException e) {
-                System.out.print("Not an Integer\nPleaser enter Integer: ");
-                getInt();
+            } catch (NumberFormatException e) {
+                TextManager.notValidInt();
             }
         }
         return input;

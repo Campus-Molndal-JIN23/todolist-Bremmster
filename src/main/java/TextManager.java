@@ -48,6 +48,14 @@ public class TextManager {
         System.out.println("Enter text for new todo ");
     }
 
+    public static void notValidInt() {
+        System.out.print("Not an Integer\nPleaser enter Integer: ");
+    }
+
+    public static void notValidChoice() {
+        System.out.println("Not a valid choice. Better luck next time");
+    }
+
     public void userMenu() {
         System.out.println("+---------------------------------------+");
         System.out.println("| User                                  |");

@@ -96,14 +96,16 @@ En TODO applikation som kan:
 Förväntad funktionalitet:
 
 * [ ] Fullt fungerande TODO applikation som kan hantera TODO i kommandotolken.
+  * [x] g nivå
+  * [ ] vg nivå
 * [ ] Fullt fungerande tester för er applikation.
 * [ ] Fullt fungerande mockning av beroenden i era tester.
-* [ ] Fullt fungerande tester genom CI på Github
+* [x] Fullt fungerande tester genom CI på Github
 * [ ] Fullt fungerande JavaFX applikation som visar upp allt på ett snyggt sätt (frivilligt)
-* [ ] Todo ska existera i en databas, antingen MongoDB eller SQLite.
+* [x] Todo ska existera i en databas, antingen MongoDB eller SQLite.
 * [ ] Ni ska använda JUnit5, Mockito samt JSON In Java.
-* [ ] Ni ska använda Maven för att bygga ert projekt.
-* [ ] Ni ska använda Github Actions för att testa ert projekt.
+* [x] Ni ska använda Maven för att bygga ert projekt.
+* [x] Ni ska använda Github Actions för att testa ert projekt.
 
 ##  3. <a name='ProjektUppgift'></a>Projekt Uppgift
 
@@ -177,10 +179,10 @@ _Möts inte detta kriteriet så är man underkänd per automatik!_
 
 ###  4.1. <a name='GrundlggandeKrav'></a>Grundläggande Krav
 
-- [ ] Komplett `pom.xml` fil som bygger projektet.
+- [x] Komplett `pom.xml` fil som bygger projektet.
 - [ ] Klasskamrat ska verifiera att er inlämning möter kraven innan ni lämnar in. Ni namnger vem som godkänt er
   inlämning i er README.md fil.
-- [ ] Fungerande YAML för testande på Github Actions CI
+- [x] Fungerande YAML för testande på Github Actions CI
 - [ ] Förbereda en max 5 min redovisning på vad ni gjort och hur ni gjort det. Ni ska kunna svara på frågor om er
   inlämning. Powerpoint eller liknande är inte ett krav.
 
