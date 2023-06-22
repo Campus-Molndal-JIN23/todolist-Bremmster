@@ -1,13 +1,15 @@
+import java.util.List;
+
 public class Todo {
 
     private int id;
     private String text;
-    private int done;
+    private int done; // 1 = done, 0 = not done
     private int assignedTo;
 
-    public Todo(String text, int done) {
+    public Todo(String text) {
         this.text = text;
-        this.done = done;
+        this.done = 0;
     }
 
     public Todo(String text, int done, int assignedTo) {
@@ -25,10 +27,6 @@ public class Todo {
 
     public int getId() {
         return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getText() {

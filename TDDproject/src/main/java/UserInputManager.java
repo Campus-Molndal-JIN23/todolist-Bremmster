@@ -7,7 +7,6 @@ public class UserInputManager {
 
 
     public static int menuChoice(int min, int max) {
-        // todo remove static?
         int input = getInt();
         if (input >= min && input <= max || input == 9) {
             return input;

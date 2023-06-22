@@ -11,5 +11,7 @@ public interface TodoDAO {
 
     void deleteTodo(Todo todo) throws SQLException;
 
+    Todo readTodoById(Todo todo) throws SQLException;
+
     List<Todo> getAllTodos() throws SQLException;
 }

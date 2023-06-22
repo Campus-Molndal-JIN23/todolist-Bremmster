@@ -2,7 +2,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoDatabase implements TodoDAO{
+public class TodoDatabase implements TodoDAO {
 
     private final Connection connection;
 
@@ -13,31 +13,57 @@ public class TodoDatabase implements TodoDAO{
 
 
     @Override
-    public void createTodo(Todo todo) throws SQLException {
+    public void createTodo(Todo todo) {
 
         String sql = "INSERT INTO todo(text,done,assignedTo) VALUES(?,?,?)";
 
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, todo.getText());
-        preparedStatement.setInt(2, todo.getDone());
-        preparedStatement.setInt(3, todo.getAssignedTo());
-        preparedStatement.execute();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, todo.getText());
+            preparedStatement.setInt(2, todo.getDone());
+            preparedStatement.setInt(3, todo.getAssignedTo());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public Todo readTodoById(int id) throws SQLException {
+    public Todo readTodoById(int id) {
 
         String sql = "SELECT * FROM todo WHERE id LIKE ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "" + id + "");
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, "%" + id + "%");
-        ResultSet resultSet = preparedStatement.executeQuery();
+            return new Todo(resultSet.getInt("id"),
+                    resultSet.getString("text"),
+                    resultSet.getInt("done"),
+                    resultSet.getInt("assignedTo")
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-        return new Todo(resultSet.getInt("id"),
-                resultSet.getString("text"),
-                resultSet.getInt("done"),
-                resultSet.getInt("assignedTo")
-        );
+    @Override
+    public Todo readTodoById(Todo todo)  {
+
+        String sql = "SELECT * FROM todo WHERE todo.text LIKE ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + todo.getText() + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return new Todo(resultSet.getInt("id"),
+                    resultSet.getString("text"),
+                    resultSet.getInt("done"),
+                    resultSet.getInt("assignedTo")
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -49,6 +75,7 @@ public class TodoDatabase implements TodoDAO{
         preparedStatement.setInt(2, todo.getDone());
         preparedStatement.setInt(3, todo.getAssignedTo());
         preparedStatement.execute();
+
     }
 
     @Override
@@ -58,7 +85,6 @@ public class TodoDatabase implements TodoDAO{
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, todo.getId());
         preparedStatement.execute();
-
     }
 
     @Override
@@ -67,7 +93,7 @@ public class TodoDatabase implements TodoDAO{
         String sql = "SELECT * FROM todo WHERE id LIKE ?";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, "%" + "*" + "%");
+        preparedStatement.setString(1, "%");
 
         return getTodos(preparedStatement);
     }

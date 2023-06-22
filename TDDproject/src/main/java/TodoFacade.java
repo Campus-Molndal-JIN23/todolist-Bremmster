@@ -1,4 +1,5 @@
 import java.sql.SQLException;
+import java.util.List;
 
 public class TodoFacade {
     // hanterar objekten och databasen
@@ -6,25 +7,29 @@ public class TodoFacade {
 
     public TodoFacade() {
 
-        try {
-            this.db = new TodoDatabase();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        this.db = new TodoDatabase();
     }
 
     public TodoFacade(TodoDatabase db) { // this constructor exists to enable testing
         this.db = db;
     }
 
-    public void createTodo() {
-        Todo todo = new Todo("Test text", 0);
-
+    public Todo createTodo(Todo todo) {
         try {
             db.createTodo(todo);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return searchTodoByText(todo);
+    }
+
+    public Todo searchTodoByText(Todo todo) {
+        try {
+            todo = db.readTodoById(todo);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return todo;
     }
 
     public Todo readTodo(int index) {
@@ -37,18 +42,27 @@ public class TodoFacade {
         return todo;
     }
 
+    public List<Todo> list() {
+        List<Todo> todos = null;
+        try {
+            todos = db.getAllTodos();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return todos;
+    }
+
+
     public void markDone(Todo todo) {
         if (todo.getDone() == 0) {
             todo.setDone(1);
         } else todo.setDone(0);
-        // System.out.println("status set to " + todo.getDone());
         writeTodoChanges(todo);
     }
 
     public void changeText(Todo todo, String newText) {
         todo.setText(newText);
         writeTodoChanges(todo);
-        // System.out.println("new text: " + todo.getText());
     }
 
     private void writeTodoChanges(Todo todo) {
