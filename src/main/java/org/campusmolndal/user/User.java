@@ -1,3 +1,4 @@
+package org.campusmolndal.user;
 
 public class User {
 

@@ -1,3 +1,5 @@
+package org.campusmolndal.todo;
+
 import org.campusmolndal.todo.Todo;
 import org.campusmolndal.todo.TodoDatabase;
 import org.campusmolndal.todo.TodoFacade;
@@ -15,12 +17,9 @@ class TodoFacadeTest {
     TodoFacade sut;
     TodoDatabase mockDb;
 
-    //org.campusmolndal.todo.TodoFacade mockFacade;
-
     @BeforeEach
     void setUp() {
         mockDb = mock(TodoDatabase.class);
-        //  mockFacade = mock(org.campusmolndal.todo.TodoFacade.class);
         sut = new TodoFacade(mockDb);
 
         when(mockDb.readTodoById(1)).thenReturn(new Todo(1, "Mockat testobjekt", 0, 0));

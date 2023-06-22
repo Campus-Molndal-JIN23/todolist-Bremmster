@@ -1,3 +1,5 @@
+package org.campusmolndal.user;
+
 import java.util.List;
 
 public class UserFacade {
