@@ -6,10 +6,12 @@ import java.util.List;
 public class Application {
 
     private final TodoFacade todoFacade;
+    private final UserFacade userFacade;
 
-    public Application(TodoFacade todoFacade) {
+    public Application(TodoFacade todoFacade, UserFacade userFacade) {
 
         this.todoFacade = todoFacade;
+        this.userFacade = userFacade;
         mainMenu();
     }
 
@@ -63,7 +65,7 @@ public class Application {
     private void updateTodo(Todo todo) {
         while (true) {
             TodoViewer.viewTodo(todo);
-            TextManager.updateMenu();
+            TextManager.updateTodoMenu();
             switch (UserInputManager.menuChoice(1, 3)) {
                 case 1 -> todoFacade.markDone(todo);
                 case 2 -> {
@@ -80,6 +82,58 @@ public class Application {
 
     private void userMenu() {
         // todo
+        while (true) {
+            TextManager.userMenu();
+            switch (UserInputManager.menuChoice(1, 4)) {
+                case 1 -> {
+                    TextManager.userNewName();
+                    User user = new User(UserInputManager.getString());
+                    TextManager.userNewAge();
+                    user.setAge(UserInputManager.getInt());
+
+                    // todo skapa en metod för att lägga till i databasen
+                    UserViewer.viewUser(userFacade.createUser(user));
+                }
+                case 2 -> {
+                    TextManager.indexOfUser("view"); // todo
+                    UserViewer.viewUser(userFacade.readUser(UserInputManager.getInt()));
+                }
+                case 3 -> {
+                    TextManager.indexOfUser("update"); // todo
+                    updateUser(userFacade.readUser(UserInputManager.getInt()));
+                }
+                case 4 -> {
+                    List<User> users = userFacade.list();
+                    if (users != null) {
+                        for (User user : users) {
+                            UserViewer.viewUser(user);
+                        }
+                    }
+                }
+                case 9 -> {
+                    return;
+                }
+            }
+        }
+    }
+
+    private void updateUser(User user) {
+        while (true) {
+            UserViewer.viewUser(user);
+            TextManager.updateTodoMenu();
+            switch (UserInputManager.menuChoice(1, 2)) {
+                case 1 -> {
+                    TextManager.userNewName();
+                    userFacade.changeName(user, UserInputManager.getString());
+                }case 2 -> {
+                    TextManager.userNewAge();
+                    userFacade.changeAge(user, UserInputManager.getInt());
+                }
+                case 9 -> {
+                    return;
+                }
+            }
+        }
     }
 }
 

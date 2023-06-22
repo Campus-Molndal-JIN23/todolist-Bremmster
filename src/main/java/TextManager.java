@@ -1,6 +1,13 @@
 public class TextManager {
 
 
+    public static void userNewName() {
+        System.out.print("Set username: ");
+    }
+
+    public static void userNewAge() {
+        System.out.print("Set user age: ");
+    }
 
     public void welcome() {
         System.out.println("Welcome to todo list app");
@@ -32,7 +39,7 @@ public class TextManager {
         System.out.print("Enter a option: ");
     }
 
-    public static void updateMenu() {
+    public static void updateTodoMenu() {
         System.out.println("+---------------------------------------+");
         System.out.println("| Update todo                           |");
         System.out.println("+---------------------------------------+");
@@ -40,6 +47,7 @@ public class TextManager {
         System.out.println("| 2) Change text                        |");
         System.out.println("| 3) Assign to other user               |");
         System.out.println("| 9) goto overhead menu                 |");
+        System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");
     }
 
@@ -58,10 +66,13 @@ public class TextManager {
         System.out.println("Not a valid choice. Better luck next time");
     }
     public static void thisDontExist() {
-        System.out.println("No todo with that index");
+        System.out.println("Nothing with that index");
+    }
+    public static void indexOfUser(String msg) {
+        System.out.println("index of user to: " + msg);
     }
 
-    public void userMenu() {
+    public static void userMenu() {
         System.out.println("+---------------------------------------+");
         System.out.println("| User                                  |");
         System.out.println("+---------------------------------------+");
@@ -69,6 +80,16 @@ public class TextManager {
         System.out.println("| 2) Update username                    |");
         System.out.println("| 3) Search for user                    |");
         System.out.println("| 4) List all users                     |");
+        System.out.println("| 9) goto overhead menu                 |");
+        System.out.println("+---------------------------------------+");
+        System.out.print("Enter a option: ");
+    }
+    public static void updateUserMenu() {
+        System.out.println("+---------------------------------------+");
+        System.out.println("| Update user                           |");
+        System.out.println("+---------------------------------------+");
+        System.out.println("| 1) Update name                        |");
+        System.out.println("| 2) Update age                         |");
         System.out.println("| 9) goto overhead menu                 |");
         System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");
