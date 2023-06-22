@@ -1,4 +1,3 @@
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +56,7 @@ public class userDatabase {
         }
 
     }
+
     private List<User> getUsers(PreparedStatement preparedStatement) throws SQLException { // KK
         // Used by all the sql query, adds result to list. If nothing is found return null
         List<User> users = new ArrayList<>();
@@ -77,7 +77,7 @@ public class userDatabase {
         String sql = "SELECT * FROM user WHERE ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1,   user.getId());
+            preparedStatement.setInt(1, user.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return new User(resultSet.getInt("id"),
@@ -88,6 +88,7 @@ public class userDatabase {
             throw new RuntimeException(e);
         }
     }
+
     public User readUserByIndex(int id) {
         String sql = "SELECT * FROM user WHERE ?";
         try {
@@ -98,7 +99,7 @@ public class userDatabase {
             return new User(resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getInt("age")
-                    );
+            );
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -108,7 +109,7 @@ public class userDatabase {
         String sql = "SELECT * FROM user WHERE ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1,   user.getName());
+            preparedStatement.setString(1, user.getName());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return new User(resultSet.getInt("id"),
@@ -118,7 +119,5 @@ public class userDatabase {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
     }
 }
