@@ -56,10 +56,10 @@ public class TodoDatabase implements TodoDatabaseInterface {
     @Override
     public Todo readTodoById(Todo todo) {
 
-        String sql = "SELECT * FROM todo WHERE todo.text LIKE ?";
+        String sql = "SELECT * FROM todo WHERE text LIKE ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, "%" + todo.getText() + "%");
+            preparedStatement.setString(1,  todo.getText());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return new Todo(resultSet.getInt("id"),
@@ -75,12 +75,13 @@ public class TodoDatabase implements TodoDatabaseInterface {
     @Override
     public void updateTodo(Todo todo) {
 
-        String sql = "UPDATE todo SET text = ?, done = ?, assignedTo = ? WHERE id = " + todo.getId() + ";";
+        String sql = "UPDATE todo SET text = ?, done = ?, assignedTo = ? WHERE id = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, todo.getText());
             preparedStatement.setInt(2, todo.getDone());
             preparedStatement.setInt(3, todo.getAssignedTo());
+            preparedStatement.setInt(4, todo.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);

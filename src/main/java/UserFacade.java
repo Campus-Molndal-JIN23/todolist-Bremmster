@@ -27,9 +27,17 @@ public class UserFacade {
 
     }
 
-    public void changeName(User user, String string) {
+    public void changeName(User user, String name) {
+        user.setName(name);
+        writeChanges(user);
     }
 
-    public void changeAge(User user, int anInt) {
+    public void changeAge(User user, int age) {
+        user.setAge(age);
+        writeChanges(user);
+    }
+
+    private void writeChanges(User user) {
+        db.updateUser(user);
     }
 }

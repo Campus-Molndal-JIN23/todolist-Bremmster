@@ -29,7 +29,7 @@ public class Application {
     private void todoMenu() {
         while (true) {
             TextManager.todoMenu();
-            switch (UserInputManager.menuChoice(1, 5)) {
+            switch (UserInputManager.menuChoice(1, 6)) {
                 case 1 -> {
                     TextManager.todoNewText();
                     Todo todo = new Todo(UserInputManager.getString());
@@ -54,6 +54,9 @@ public class Application {
                             TodoViewer.viewTodo(todo);
                         }
                     }
+                }
+                case 6 -> {
+                    System.out.println("Not yet implemented");
                 }
                 case 9 -> {
                     return;

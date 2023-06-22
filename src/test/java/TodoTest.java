@@ -1,5 +1,3 @@
-package org.campusmolndal.todo;
-
 import org.campusmolndal.todo.Todo;
 import org.junit.jupiter.api.Test;
 
