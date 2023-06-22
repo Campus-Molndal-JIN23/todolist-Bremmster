@@ -6,9 +6,13 @@ public class TodoDatabase implements TodoDAO {
 
     private final Connection connection;
 
-    public TodoDatabase() throws SQLException {
+    public TodoDatabase() {
         String dbName = "todo_app_db";
-        this.connection = DriverManager.getConnection("jdbc:sqlite:" + dbName + ".db");
+        try {
+            this.connection = DriverManager.getConnection("jdbc:sqlite:" + dbName + ".db");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -48,7 +52,7 @@ public class TodoDatabase implements TodoDAO {
     }
 
     @Override
-    public Todo readTodoById(Todo todo)  {
+    public Todo readTodoById(Todo todo) {
 
         String sql = "SELECT * FROM todo WHERE todo.text LIKE ?";
         try {
@@ -67,35 +71,45 @@ public class TodoDatabase implements TodoDAO {
     }
 
     @Override
-    public void updateTodo(Todo todo) throws SQLException {
+    public void updateTodo(Todo todo) {
 
         String sql = "UPDATE todo SET text = ?, done = ?, assignedTo = ? WHERE id = " + todo.getId() + ";";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, todo.getText());
-        preparedStatement.setInt(2, todo.getDone());
-        preparedStatement.setInt(3, todo.getAssignedTo());
-        preparedStatement.execute();
-
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, todo.getText());
+            preparedStatement.setInt(2, todo.getDone());
+            preparedStatement.setInt(3, todo.getAssignedTo());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void deleteTodo(Todo todo) throws SQLException {
+    public void deleteTodo(Todo todo) {
 
         String sql = "DELETE FROM todo WHERE id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, todo.getId());
-        preparedStatement.execute();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, todo.getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public List<Todo> getAllTodos() throws SQLException {
+    public List<Todo> getAllTodos() {
 
         String sql = "SELECT * FROM todo WHERE id LIKE ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "%");
 
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, "%");
-
-        return getTodos(preparedStatement);
+            return getTodos(preparedStatement);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private List<Todo> getTodos(PreparedStatement preparedStatement) throws SQLException { // KK

@@ -1,9 +1,8 @@
-import java.sql.SQLException;
 import java.util.List;
 
 public class TodoFacade {
     // hanterar objekten och databasen
-    private TodoDatabase db;
+    private final TodoDatabase db;
 
     public TodoFacade() {
 
@@ -15,40 +14,30 @@ public class TodoFacade {
     }
 
     public Todo createTodo(Todo todo) {
-        try {
-            db.createTodo(todo);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        db.createTodo(todo);
         return searchTodoByText(todo);
     }
 
     public Todo searchTodoByText(Todo todo) {
-        try {
-            todo = db.readTodoById(todo);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+        todo = db.readTodoById(todo);
+
         return todo;
     }
 
     public Todo readTodo(int index) {
         Todo todo;
-        try {
-            todo = db.readTodoById(index);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+        todo = db.readTodoById(index);
+
         return todo;
     }
 
     public List<Todo> list() {
         List<Todo> todos = null;
-        try {
-            todos = db.getAllTodos();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+        todos = db.getAllTodos();
+
         return todos;
     }
 
@@ -66,20 +55,16 @@ public class TodoFacade {
     }
 
     private void writeTodoChanges(Todo todo) {
-        try {
-            db.updateTodo(todo);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+        db.updateTodo(todo);
+
     }
 
     public void deleteTodo(int index) {
         Todo todo = readTodo(index);
-        try {
-            db.deleteTodo(todo);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+        db.deleteTodo(todo);
+
     }
 
 
