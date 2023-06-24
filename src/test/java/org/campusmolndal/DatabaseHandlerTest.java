@@ -2,6 +2,7 @@ package org.campusmolndal;
 
 import org.campusmolndal.DatabaseHandler;
 import org.campusmolndal.todo.Todo;
+import org.campusmolndal.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ class DatabaseHandlerTest {
 
 
     @BeforeEach
-    void setUp() throws SQLException {
+    void setUp() {
         sut = DatabaseHandler.getInstance();
     }
 
@@ -57,6 +58,17 @@ class DatabaseHandlerTest {
     public void getAllTodos() {
 
         assertNotNull(sut.getAllTodos());
+
+    }
+
+    @Test
+    public void getUserIntIndex() {
+        // arrange
+        String expexted = "Bremmster";
+        // act
+        User actual = sut.readUserByIndex(2);
+        // assert
+        assertEquals(expexted, actual.getName());
 
     }
 

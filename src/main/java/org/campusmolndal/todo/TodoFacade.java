@@ -54,9 +54,7 @@ public class TodoFacade {
     }
 
     private void writeTodoChanges(Todo todo) {
-
         db.updateTodo(todo);
-
     }
 
     public void deleteTodo(int index) {
@@ -65,6 +63,8 @@ public class TodoFacade {
     }
 
 
-    public void assignToUser() {
+    public void assignToUser(Todo todo, User currentUser) {
+        todo.setAssignedTo(currentUser.getId());
+        writeTodoChanges(todo);
     }
 }

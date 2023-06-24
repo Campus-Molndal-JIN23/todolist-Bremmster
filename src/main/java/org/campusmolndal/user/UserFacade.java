@@ -34,11 +34,11 @@ public class UserFacade {
     public User changeUser(User currentUser, int index) {
         User user = db.readUserByIndex(index);
 
-        if (user.getId() == 0) {
+        if (user.getId() != 0) {
+            return user;
+        } else {
             TextManager.thisDontExist();
             return currentUser;
-        } else {
-            return user;
         }
     }
 

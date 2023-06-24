@@ -213,10 +213,10 @@ public class DatabaseHandler {
     }
 
     public User readUserByIndex(int id) {
-        String sql = "SELECT * FROM user WHERE ?";
+        String sql = "SELECT * FROM user WHERE id = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setString(1, String.valueOf(id));
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return new User(resultSet.getInt("id"),
