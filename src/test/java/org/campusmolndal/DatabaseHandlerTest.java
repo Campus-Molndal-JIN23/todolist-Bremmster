@@ -25,7 +25,7 @@ class DatabaseHandlerTest {
     @Test
     public void readTodoByInt() {
         // arrange
-        Todo expected = new Todo(1, "Test text", 0, 0);
+        Todo expected = new Todo(1, "Test text", 0, 1);
         // act
         Todo actual;
 
@@ -41,7 +41,7 @@ class DatabaseHandlerTest {
     @Test
     public void readTodoByText() {
         // arrange
-        Todo expected = new Todo(1, "Test text", 0, 0);
+        Todo expected = new Todo(1, "Test text", 0, 1);
         // act
         Todo actual;
 
@@ -64,11 +64,11 @@ class DatabaseHandlerTest {
     @Test
     public void getUserIntIndex() {
         // arrange
-        String expexted = "Bremmster";
+        String expected = "Bremmster";
         // act
         User actual = sut.readUserByIndex(2);
         // assert
-        assertEquals(expexted, actual.getName());
+        assertEquals(expected, actual.getName());
 
     }
 

@@ -39,6 +39,12 @@ public class TodoFacade {
         todos = db.getAllTodos();
         return todos;
     }
+    public List<Todo> listUsersTodos(User currentUser) {
+        List<Todo> todos = null;
+        todos = db.getAllUserTodos(currentUser);
+        return todos;
+    }
+
 
 
     public void markDone(Todo todo) {

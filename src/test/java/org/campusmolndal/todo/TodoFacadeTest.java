@@ -86,10 +86,14 @@ class TodoFacadeTest {
     @Test
     void testList() {
         List<Todo> expected = sut.list();
-
         assertNotNull(expected);
-
     }
+    @Test
+    void testUserList() {
+        List<Todo> expected = sut.listUsersTodos(new User(1, "current", 1));
+        assertNotNull(expected);
+    }
+
 
     @Test
     void deleteTodo() {

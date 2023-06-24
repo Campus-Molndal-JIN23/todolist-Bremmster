@@ -39,7 +39,7 @@ public class Application {
     private void todoMenu() {
         while (true) {
             TextManager.todoMenu(currentUser);
-            switch (UserInputManager.menuChoice(1, 6)) {
+            switch (UserInputManager.menuChoice(1, 7)) {
                 case 1 -> { // Create
                     TextManager.todoNewText();
                     Todo todo = new Todo(UserInputManager.getString());
@@ -65,8 +65,16 @@ public class Application {
                         }
                     }
                 }
-                case 6 -> { // change user
-                   TextManager.changeUserSelectId();
+                case 6 -> { // List todo flytta denna till facade, detta går faktiskt att testa
+                    List<Todo> todos = todoFacade.listUsersTodos(currentUser);
+                    if (todos != null) {
+                        for (Todo todo : todos) {
+                            TodoViewer.viewTodo(todo);
+                        }
+                    }
+                }
+                case 7 -> { // change user
+                    TextManager.changeUserSelectId();
                     this.currentUser = userFacade.changeUser(currentUser, UserInputManager.getInt());
                 }
                 case 9 -> {

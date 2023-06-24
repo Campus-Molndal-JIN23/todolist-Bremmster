@@ -41,7 +41,8 @@ public class TextManager {
         System.out.println("| 3) Update a todo                      |");
         System.out.println("| 4) Delete a todo                      |");
         System.out.println("| 5) List all todo                      |");
-        System.out.println("| 6) Change user                        |");
+        System.out.println("| 6) List current users todos           |");
+        System.out.println("| 7) Change user                        |");
         System.out.println("| 9) goto overhead menu                 |");
         System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");
