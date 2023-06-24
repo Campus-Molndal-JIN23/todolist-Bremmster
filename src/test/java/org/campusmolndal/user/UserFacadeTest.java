@@ -1,6 +1,6 @@
 package org.campusmolndal.user;
 
-import org.campusmolndal.todo.DatabaseHandler;
+import org.campusmolndal.DatabaseHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

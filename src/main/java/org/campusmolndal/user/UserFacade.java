@@ -1,7 +1,7 @@
 package org.campusmolndal.user;
 
 import org.campusmolndal.helpers.TextManager;
-import org.campusmolndal.todo.DatabaseHandler;
+import org.campusmolndal.DatabaseHandler;
 
 import java.util.List;
 

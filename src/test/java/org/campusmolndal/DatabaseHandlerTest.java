@@ -1,5 +1,7 @@
-package org.campusmolndal.todo;
+package org.campusmolndal;
 
+import org.campusmolndal.DatabaseHandler;
+import org.campusmolndal.todo.Todo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-class TodoDatabaseTest {
+class DatabaseHandlerTest {
 
     private DatabaseHandler sut;
 

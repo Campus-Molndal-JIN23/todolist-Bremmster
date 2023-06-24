@@ -108,7 +108,7 @@ public class DatabaseHandler {
         }
     }
 
-    
+
     public List<Todo> getAllTodos() {
 
         String sql = "SELECT * FROM todo WHERE id LIKE ?";
