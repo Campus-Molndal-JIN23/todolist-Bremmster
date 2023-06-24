@@ -1,8 +1,11 @@
 package org.campusmolndal.user;
 
 import org.campusmolndal.DatabaseHandler;
+import org.campusmolndal.todo.Todo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -26,10 +29,13 @@ class UserFacadeTest {
 
     @Test
     void createUser() {
+        sut.createUser((new User(1, "Default", 1337)));
+        assertNotNull(sut.readUser(1));
     }
 
     @Test
     void readUser() {
+        assertNotNull(sut.readUser(2));
     }
 
     @Test
@@ -48,13 +54,23 @@ class UserFacadeTest {
 
     @Test
     void list() {
+        List<User> expected = sut.list();
+        assertNotNull(expected);
     }
 
     @Test
     void changeName() {
+        sut.changeName(new User(2, "Boris", 39), "Bremmster");
+        assertEquals("Bremmster", sut.readUser(2).getName());
     }
 
     @Test
     void changeAge() {
+        sut.changeAge(new User(2, "Bremmster", 29), 39);
+        assertEquals(39, sut.readUser(2).getAge());
+    }
+    @Test
+    void testConsturctor() {
+        assertNotNull(new UserFacade());
     }
 }

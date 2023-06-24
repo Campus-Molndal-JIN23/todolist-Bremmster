@@ -1,5 +1,7 @@
 package org.campusmolndal.user;
 
+import org.campusmolndal.helpers.TextManager;
+
 public class User {
 
     private int id;
@@ -7,7 +9,11 @@ public class User {
     private int age;
 
     public User(String name) {
-        this.name = name;
+        if (name.equals("")) {
+            this.name = "Default user";
+        } else {
+            this.name = name;
+        }
     }
 
     public User(int id, String name, int age) {
@@ -25,7 +31,11 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.equals("")) {
+            TextManager.notValidData();
+        } else {
+            this.name = name;
+        }
     }
 
     public int getAge() {

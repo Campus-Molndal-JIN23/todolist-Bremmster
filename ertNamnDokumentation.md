@@ -26,9 +26,10 @@
 
 ### Vad som varit svårt
 Skriva bra tester, den testbara koden är klämd mellan application som bara har privata metoder och tar in input av användaren. Och klassen som hanterar databasen. 
-Lektionen  hur man skapar en CI pipe levererade inte fungerade exempel
+Lektionen hur man skapar en CI pipe levererade inte fungerade exempel
 
 ### Beskriv lite olika lösningar du gjort
+
 
 ### Beskriv något som var besvärligt att få till
 

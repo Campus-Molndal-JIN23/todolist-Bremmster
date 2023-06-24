@@ -80,7 +80,7 @@ public class DatabaseHandler {
         }
     }
 
-    public void updateTodo(Todo todo) {
+    public boolean updateTodo(Todo todo) {
 
         String sql = "UPDATE todo SET text = ?, done = ?, assignedTo = ? WHERE id = ?";
         try {
@@ -93,6 +93,7 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return true;
     }
 
 

@@ -13,6 +13,10 @@ public class TextManager {
         System.out.print("Set user age: ");
     }
 
+    public static void notValidData() {
+        System.out.println("Sorry i wont allow that");
+    }
+
     public void welcome() {
         System.out.println("Welcome to todo list app");
     }

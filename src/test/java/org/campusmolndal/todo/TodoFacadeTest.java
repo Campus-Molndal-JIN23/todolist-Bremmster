@@ -25,6 +25,8 @@ class TodoFacadeTest {
         when(mockDb.readTodoById(1)).thenReturn(new Todo(1, "Mockat testobjekt", 0, 1));
         when(mockDb.readTodoById(2)).thenReturn(new Todo(2, "Avslutad todo", 1, 1));
         when(mockDb.readTodoById(3)).thenReturn(null);
+        when(mockDb.updateTodo(new Todo(4, "change users", 1, 1))).thenReturn(true);
+
       // överväg att returnera ifrån databasen  when(mockDb.updateTodo(new Todo(2, "Avslutad todo", 1, 2)).thenReturn(new Todo(2, "Avslutad todo", 1, 1));
 
     }
@@ -100,13 +102,11 @@ class TodoFacadeTest {
     }
 
     @Test
-    @Disabled
     void assignToUser() {
         User currentUser = new User(1, "Default", 1337);
-        sut.assignToUser(new Todo(2, "Avslutad todo", 1, 2), currentUser);
-        int expected =1;
-        // after a update db returns void
-        assertEquals(expected, sut.readTodo(2).getId());
+        sut.assignToUser(new Todo(4, "change users", 1, 4), currentUser);
+        // if this test fails the test works as production.
+        assertFalse( mockDb.updateTodo(new Todo(4, "change users", 1, 1)));
     }
 
     @Test

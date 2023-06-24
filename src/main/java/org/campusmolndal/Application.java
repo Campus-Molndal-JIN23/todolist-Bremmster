@@ -111,8 +111,8 @@ public class Application {
                 case 2 -> { // Update
                     TextManager.indexOfUser("update"); // todo
                     updateUser(userFacade.readUser(UserInputManager.getInt()));
-                    //TextManager.indexOfUser("view"); // todo
-                    //UserViewer.viewUser(userFacade.readUser(UserInputManager.getInt()));
+                    // TextManager.indexOfUser("view"); // todo
+                    // UserViewer.viewUser(userFacade.readUser(UserInputManager.getInt()));
                 }
                 case 3 -> { // List
                     List<User> users = userFacade.list();

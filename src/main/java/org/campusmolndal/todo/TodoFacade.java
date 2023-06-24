@@ -54,7 +54,7 @@ public class TodoFacade {
     }
 
     private void writeTodoChanges(Todo todo) {
-        db.updateTodo(todo);
+        boolean hereToMakeATestPossible = db.updateTodo(todo);
     }
 
     public void deleteTodo(int index) {
