@@ -1,5 +1,7 @@
 package org.campusmolndal.todo;
 
+import org.campusmolndal.user.User;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public class TodoDatabase implements TodoDatabaseInterface {
 
 
     @Override
-    public void createTodo(Todo todo) {
+    public void createTodo(Todo todo, User currentUser) {
 
         String sql = "INSERT INTO todo(text,done,assignedTo) VALUES(?,?,?)";
 
@@ -27,7 +29,7 @@ public class TodoDatabase implements TodoDatabaseInterface {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, todo.getText());
             preparedStatement.setInt(2, todo.getDone());
-            preparedStatement.setInt(3, todo.getAssignedTo());
+            preparedStatement.setInt(3, currentUser.getId());
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -40,7 +42,7 @@ public class TodoDatabase implements TodoDatabaseInterface {
         String sql = "SELECT * FROM todo WHERE id LIKE ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, "" + id + "");
+            preparedStatement.setString(1, String.valueOf(id));
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return new Todo(resultSet.getInt("id"),

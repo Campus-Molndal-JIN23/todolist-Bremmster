@@ -4,11 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class userDatabase {
+public class UserDatabase {
 
     private final Connection connection;
 
-    public userDatabase() {
+    public UserDatabase() {
         String dbName = "todo_app_db";
         try {
             this.connection = DriverManager.getConnection("jdbc:sqlite:" + dbName + ".db");

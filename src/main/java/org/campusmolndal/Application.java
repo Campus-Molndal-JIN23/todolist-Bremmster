@@ -1,4 +1,5 @@
 package org.campusmolndal;
+
 import org.campusmolndal.helpers.TextManager;
 import org.campusmolndal.helpers.UserInputManager;
 import org.campusmolndal.todo.Todo;
@@ -8,18 +9,19 @@ import org.campusmolndal.user.User;
 import org.campusmolndal.user.UserFacade;
 import org.campusmolndal.user.UserViewer;
 
-
 import java.util.List;
 
 public class Application {
 
     private final TodoFacade todoFacade;
     private final UserFacade userFacade;
+    private User currentUser;
 
     public Application(TodoFacade todoFacade, UserFacade userFacade) {
 
         this.todoFacade = todoFacade;
         this.userFacade = userFacade;
+        this.currentUser = userFacade.readUser(1); // set user to name default from database
         mainMenu();
     }
 
@@ -36,26 +38,26 @@ public class Application {
 
     private void todoMenu() {
         while (true) {
-            TextManager.todoMenu();
+            TextManager.todoMenu(currentUser);
             switch (UserInputManager.menuChoice(1, 6)) {
-                case 1 -> {
+                case 1 -> { // Create
                     TextManager.todoNewText();
                     Todo todo = new Todo(UserInputManager.getString());
-                    TodoViewer.viewTodo(todoFacade.createTodo(todo));
+                    TodoViewer.viewTodo(todoFacade.createTodo(todo, currentUser));
                 }
-                case 2 -> {
+                case 2 -> { // Read
                     TextManager.indexOfTodo("view");
                     TodoViewer.viewTodo(todoFacade.readTodo(UserInputManager.getInt()));
                 }
-                case 3 -> {
+                case 3 -> { // Update
                     TextManager.indexOfTodo("update");
                     updateTodo(todoFacade.readTodo(UserInputManager.getInt()));
                 }
-                case 4 -> {
+                case 4 -> { // Delete
                     TextManager.indexOfTodo("delete");
                     todoFacade.deleteTodo(UserInputManager.getInt());
                 }
-                case 5 -> {
+                case 5 -> { // List todo flytta denna till facade, detta går faktiskt att testa
                     List<Todo> todos = todoFacade.list();
                     if (todos != null) {
                         for (Todo todo : todos) {
@@ -63,8 +65,9 @@ public class Application {
                         }
                     }
                 }
-                case 6 -> {
-                    System.out.println("Not yet implemented");
+                case 6 -> { // change user
+                    System.out.println("Change user select id: "); // todo flytta till facade för att skapa test
+                    this.currentUser = userFacade.changeUser(currentUser, UserInputManager.getInt());
                 }
                 case 9 -> {
                     return;
@@ -76,7 +79,7 @@ public class Application {
     private void updateTodo(Todo todo) {
         while (true) {
             TodoViewer.viewTodo(todo);
-            TextManager.updateTodoMenu();
+            TextManager.updateTodoMenu(currentUser);
             switch (UserInputManager.menuChoice(1, 3)) {
                 case 1 -> todoFacade.markDone(todo);
                 case 2 -> {
@@ -131,12 +134,13 @@ public class Application {
     private void updateUser(User user) {
         while (true) {
             UserViewer.viewUser(user);
-            TextManager.updateTodoMenu();
+            TextManager.updateTodoMenu(currentUser);
             switch (UserInputManager.menuChoice(1, 2)) {
                 case 1 -> {
                     TextManager.userNewName();
                     userFacade.changeName(user, UserInputManager.getString());
-                }case 2 -> {
+                }
+                case 2 -> {
                     TextManager.userNewAge();
                     userFacade.changeAge(user, UserInputManager.getInt());
                 }

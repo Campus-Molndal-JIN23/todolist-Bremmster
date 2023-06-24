@@ -1,5 +1,7 @@
 package org.campusmolndal.todo;
 
+import org.campusmolndal.user.User;
+
 import java.util.List;
 
 public class TodoFacade {
@@ -15,8 +17,8 @@ public class TodoFacade {
         this.db = db;
     }
 
-    public Todo createTodo(Todo todo) {
-        db.createTodo(todo);
+    public Todo createTodo(Todo todo, User currentUser) {
+        db.createTodo(todo, currentUser);
         return searchTodoByText(todo);
     }
 

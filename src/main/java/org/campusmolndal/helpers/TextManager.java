@@ -1,5 +1,7 @@
 package org.campusmolndal.helpers;
 
+import org.campusmolndal.user.User;
+
 public class TextManager {
 
 
@@ -26,9 +28,9 @@ public class TextManager {
         System.out.print("Enter a option: ");
     }
 
-    public static void todoMenu() {
+    public static void todoMenu(User currentUser) {
         System.out.println("+---------------------------------------+");
-        System.out.println("| TODO                                  |");
+        System.out.println("| TODO | Current user: " + currentUser.getName());
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Create a todo                      |");
         System.out.println("| 2) Read a todo                        |");
@@ -41,9 +43,9 @@ public class TextManager {
         System.out.print("Enter a option: ");
     }
 
-    public static void updateTodoMenu() {
+    public static void updateTodoMenu(User currentUser) {
         System.out.println("+---------------------------------------+");
-        System.out.println("| Update todo                           |");
+        System.out.println("| Update todo | Current user: " + currentUser.getName());
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Toggle done/ not done              |");
         System.out.println("| 2) Change text                        |");
