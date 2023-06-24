@@ -1,5 +1,6 @@
 package org.campusmolndal.user;
 
+import org.campusmolndal.todo.DatabaseHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,11 +11,11 @@ import static org.mockito.Mockito.when;
 class UserFacadeTest {
 
     UserFacade sut;
-    UserDatabase mockDb;
+    DatabaseHandler mockDb;
 
     @BeforeEach
     void setUp() {
-        mockDb = mock(UserDatabase.class);
+        mockDb = mock(DatabaseHandler.class);
         sut = new UserFacade(mockDb);
 
         when(mockDb.readUserByIndex(1)).thenReturn(new User(1, "Default", 1337));
@@ -39,6 +40,7 @@ class UserFacadeTest {
 
     @Test
     void changeToUserThatDontExist() {
+        System.out.print("should not change user ");
         int expected = new User(1, "Default", 1337).getId();
         int actual = sut.changeUser(new User(1, "Default", 1337), 3).getId();
         assertEquals(expected,actual);

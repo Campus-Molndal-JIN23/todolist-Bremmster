@@ -1,18 +1,19 @@
 package org.campusmolndal.user;
 
 import org.campusmolndal.helpers.TextManager;
+import org.campusmolndal.todo.DatabaseHandler;
 
 import java.util.List;
 
 public class UserFacade {
 
-    private final UserDatabase db;
+    private final DatabaseHandler db;
 
     public UserFacade() {
-        this.db = new UserDatabase();
+        this.db = DatabaseHandler.getInstance();
     }
 
-    public UserFacade(UserDatabase mockDb) {
+    public UserFacade(DatabaseHandler mockDb) {
         this.db = mockDb; // constructor to enable testing
 
     }
@@ -29,13 +30,14 @@ public class UserFacade {
     public User readUser(int index) {
         return db.readUserByIndex(index);
     }
+
     public User changeUser(User currentUser, int index) {
         User user = db.readUserByIndex(index);
 
         if (user.getId() == 0) {
-           return currentUser;
-        } else {
             TextManager.thisDontExist();
+            return currentUser;
+        } else {
             return user;
         }
     }

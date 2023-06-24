@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class TodoDatabaseTest {
 
-    private TodoDatabase sut;
+    private DatabaseHandler sut;
 
 
     @BeforeEach
     void setUp() throws SQLException {
-        sut = new TodoDatabase();
+        sut = DatabaseHandler.getInstance();
     }
 
     @Test

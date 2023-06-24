@@ -1,18 +1,19 @@
 package org.campusmolndal.todo;
 
+import org.campusmolndal.DatabaseHandler;
 import org.campusmolndal.user.User;
 
 import java.util.List;
 
 public class TodoFacade {
     // hanterar objekten och databasen
-    private final TodoDatabase db;
+    private final DatabaseHandler db;
 
     public TodoFacade() {
-        this.db = new TodoDatabase();
+        this.db = DatabaseHandler.getInstance();
     }
 
-    public TodoFacade(TodoDatabase db) {
+    public TodoFacade(DatabaseHandler db) {
         // this constructor exists to enable testing
         this.db = db;
     }

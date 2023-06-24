@@ -1,6 +1,5 @@
 package org.campusmolndal.todo;
 
-import net.bytebuddy.asm.Advice;
 import org.campusmolndal.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,11 +13,11 @@ import static org.mockito.Mockito.when;
 class TodoFacadeTest {
 
     TodoFacade sut;
-    TodoDatabase mockDb;
+    DatabaseHandler mockDb;
 
     @BeforeEach
     void setUp() {
-        mockDb = mock(TodoDatabase.class);
+        mockDb = mock(DatabaseHandler.class);
         sut = new TodoFacade(mockDb);
 
         when(mockDb.readTodoById(1)).thenReturn(new Todo(1, "Mockat testobjekt", 0, 1));
