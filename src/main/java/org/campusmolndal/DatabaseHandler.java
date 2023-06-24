@@ -122,6 +122,18 @@ public class DatabaseHandler {
             throw new RuntimeException(e);
         }
     }
+    public List<Todo> getAllUserTodos(User user) {
+
+        String sql = "SELECT * FROM todo WHERE assignedTo LIKE ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, user.getId());
+
+            return getTodos(preparedStatement);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private List<Todo> getTodos(PreparedStatement preparedStatement) throws SQLException { // KK
         // Used by all the sql query, adds result to list. If nothing is found return null
