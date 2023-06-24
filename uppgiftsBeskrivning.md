@@ -87,7 +87,7 @@ En TODO applikation som kan:
     - [x] Uppdatera texten
     - [x] Uppdatera om en todo är klar eller inte
 - [x] Radera TODO från er databas
-- Skapa en användare
+- [x] Skapa en användare
 - Visa alla användare
 - Visa en enskild användare
 - Uppdatera en användare
@@ -102,8 +102,8 @@ Förväntad funktionalitet:
 * [ ] Fullt fungerande mockning av beroenden i era tester.
 * [x] Fullt fungerande tester genom CI på Github
 * [x]  JavaFX (frivilligt)
-* [x] org.campusmolndal.todo.Todo ska existera i en databas, antingen MongoDB eller SQLite.
-* [x] Ni ska använda JUnit5, Mockito I Java.
+* [x] Todo ska existera i en databas, antingen MongoDB eller SQLite.
+* [ ] Ni ska använda JUnit5, Mockito I Java.
 * [x] Ni ska använda Maven för att bygga ert projekt.
 * [x] Ni ska använda Github Actions för att testa ert projekt.
 

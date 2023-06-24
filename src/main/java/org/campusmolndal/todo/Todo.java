@@ -1,5 +1,7 @@
 package org.campusmolndal.todo;
 
+import org.campusmolndal.helpers.TextManager;
+
 import java.util.List;
 
 public class Todo {
@@ -36,7 +38,11 @@ public class Todo {
     }
 
     public void setText(String text) {
-        this.text = text;
+        if (text.equals("")) {
+            TextManager.notValidData();
+        } else {
+            this.text = text;
+        }
     }
 
     public int getDone() {

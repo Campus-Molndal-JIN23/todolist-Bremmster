@@ -1,9 +1,9 @@
 package org.campusmolndal.todo;
 
-import org.campusmolndal.todo.Todo;
-import org.campusmolndal.todo.TodoDatabase;
-import org.campusmolndal.todo.TodoFacade;
+import org.campusmolndal.DatabaseHandler;
+import org.campusmolndal.user.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -15,23 +15,26 @@ import static org.mockito.Mockito.when;
 class TodoFacadeTest {
 
     TodoFacade sut;
-    TodoDatabase mockDb;
+    DatabaseHandler mockDb;
 
     @BeforeEach
     void setUp() {
-        mockDb = mock(TodoDatabase.class);
+        mockDb = mock(DatabaseHandler.class);
         sut = new TodoFacade(mockDb);
 
-        when(mockDb.readTodoById(1)).thenReturn(new Todo(1, "Mockat testobjekt", 0, 0));
-        when(mockDb.readTodoById(2)).thenReturn(new Todo(2, "Avslutad todo", 1, 0));
+        when(mockDb.readTodoById(1)).thenReturn(new Todo(1, "Mockat testobjekt", 0, 1));
+        when(mockDb.readTodoById(2)).thenReturn(new Todo(2, "Avslutad todo", 1, 1));
         when(mockDb.readTodoById(3)).thenReturn(null);
+        when(mockDb.updateTodo(new Todo(4, "change users", 1, 1))).thenReturn(true);
+
+      // överväg att returnera ifrån databasen  when(mockDb.updateTodo(new Todo(2, "Avslutad todo", 1, 2)).thenReturn(new Todo(2, "Avslutad todo", 1, 1));
 
     }
 
     @Test
     void testCreateTodo()  {
         // Arrange
-        sut.createTodo(new Todo(1, "Mockat testobjekt", 0, 0));
+        sut.createTodo(new Todo(1, "Mockat testobjekt", 0, 0), new User(1, "Default", 1337));
 
         // Assert
         assertNotNull((mockDb.readTodoById(1))); // logic is a bit flipped but production works.
@@ -100,8 +103,10 @@ class TodoFacadeTest {
 
     @Test
     void assignToUser() {
-        sut.assignToUser();
-
+        User currentUser = new User(1, "Default", 1337);
+        sut.assignToUser(new Todo(4, "change users", 1, 4), currentUser);
+        // if this test fails the test works as production.
+        assertFalse( mockDb.updateTodo(new Todo(4, "change users", 1, 1)));
     }
 
     @Test

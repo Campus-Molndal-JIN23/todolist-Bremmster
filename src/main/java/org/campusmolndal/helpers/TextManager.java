@@ -1,5 +1,7 @@
 package org.campusmolndal.helpers;
 
+import org.campusmolndal.user.User;
+
 public class TextManager {
 
 
@@ -9,6 +11,10 @@ public class TextManager {
 
     public static void userNewAge() {
         System.out.print("Set user age: ");
+    }
+
+    public static void notValidData() {
+        System.out.println("Sorry i wont allow that");
     }
 
     public void welcome() {
@@ -26,9 +32,9 @@ public class TextManager {
         System.out.print("Enter a option: ");
     }
 
-    public static void todoMenu() {
+    public static void todoMenu(User currentUser) {
         System.out.println("+---------------------------------------+");
-        System.out.println("| TODO                                  |");
+        System.out.println("| TODO | Current user: " + currentUser.getName());
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Create a todo                      |");
         System.out.println("| 2) Read a todo                        |");
@@ -41,13 +47,13 @@ public class TextManager {
         System.out.print("Enter a option: ");
     }
 
-    public static void updateTodoMenu() {
+    public static void updateTodoMenu(User currentUser) {
         System.out.println("+---------------------------------------+");
-        System.out.println("| Update todo                           |");
+        System.out.println("| Update todo | Current user: " + currentUser.getName());
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Toggle done/ not done              |");
         System.out.println("| 2) Change text                        |");
-        System.out.println("| 3) Assign to other user               |");
+        System.out.println("| 3) Assign to current user               |");
         System.out.println("| 9) goto overhead menu                 |");
         System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");
@@ -74,19 +80,22 @@ public class TextManager {
         System.out.println("index of user to: " + msg);
     }
 
+    public static void  changeUserSelectId() {
+        System.out.println("Change user select id: ");
+    }
+
     public static void userMenu() {
         System.out.println("+---------------------------------------+");
         System.out.println("| User                                  |");
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Create a user                      |");
-        System.out.println("| 2) Update username                    |");
-        System.out.println("| 3) Search for user                    |");
-        System.out.println("| 4) List all users                     |");
+        System.out.println("| 2) Update user                        |");
+        System.out.println("| 3) List all users                     |");
         System.out.println("| 9) goto overhead menu                 |");
         System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");
     }
-    public static void updateUserMenu() {
+    public static void updateUserMenu(User curretUser) {
         System.out.println("+---------------------------------------+");
         System.out.println("| Update user                           |");
         System.out.println("+---------------------------------------+");

@@ -1,5 +1,8 @@
-package org.campusmolndal.todo;
+package org.campusmolndal;
 
+import org.campusmolndal.DatabaseHandler;
+import org.campusmolndal.todo.Todo;
+import org.campusmolndal.user.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,14 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-class TodoDatabaseTest {
+class DatabaseHandlerTest {
 
-    private TodoDatabase sut;
+    private DatabaseHandler sut;
 
 
     @BeforeEach
-    void setUp() throws SQLException {
-        sut = new TodoDatabase();
+    void setUp() {
+        sut = DatabaseHandler.getInstance();
     }
 
     @Test
@@ -55,6 +58,17 @@ class TodoDatabaseTest {
     public void getAllTodos() {
 
         assertNotNull(sut.getAllTodos());
+
+    }
+
+    @Test
+    public void getUserIntIndex() {
+        // arrange
+        String expexted = "Bremmster";
+        // act
+        User actual = sut.readUserByIndex(2);
+        // assert
+        assertEquals(expexted, actual.getName());
 
     }
 

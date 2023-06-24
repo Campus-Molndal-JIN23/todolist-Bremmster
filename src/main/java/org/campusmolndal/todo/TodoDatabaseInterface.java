@@ -1,10 +1,12 @@
 package org.campusmolndal.todo;
 
+import org.campusmolndal.user.User;
+
 import java.util.List;
 
 public interface TodoDatabaseInterface {
 
-    void createTodo(Todo todo);
+    void createTodo(Todo todo, User currentUser);
 
     Todo readTodoById(int id);
 
