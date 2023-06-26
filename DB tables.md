@@ -3,8 +3,8 @@ classDiagram
 TodoTable -- UserTable
 class TodoTable{
 int id_PK
-VarCar280 text
-bool done
+String text
+int done
 int asignedTo_FK
 }
 class UserTable{
