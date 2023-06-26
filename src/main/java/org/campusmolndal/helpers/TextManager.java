@@ -96,9 +96,9 @@ public class TextManager {
         System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");
     }
-    public static void updateUserMenu(User curretUser) {
+    public static void updateUserMenu(User currentUser) {
         System.out.println("+---------------------------------------+");
-        System.out.println("| Update user                           |");
+        System.out.println("| Update user | Current user: " + currentUser.getName());
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Update name                        |");
         System.out.println("| 2) Update age                         |");

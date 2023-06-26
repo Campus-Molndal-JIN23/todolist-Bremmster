@@ -4,6 +4,7 @@ import org.campusmolndal.DatabaseHandler;
 import org.campusmolndal.todo.Todo;
 import org.campusmolndal.user.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -11,6 +12,9 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ *  Test in the production database, all test should be disabled
+ */
 
 class DatabaseHandlerTest {
 
@@ -23,6 +27,7 @@ class DatabaseHandlerTest {
     }
 
     @Test
+    @Disabled
     public void readTodoByInt() {
         // arrange
         Todo expected = new Todo(1, "Test text", 0, 1);
@@ -39,6 +44,7 @@ class DatabaseHandlerTest {
     }
 
     @Test
+    @Disabled
     public void readTodoByText() {
         // arrange
         Todo expected = new Todo(1, "Test text", 0, 1);
@@ -55,6 +61,7 @@ class DatabaseHandlerTest {
     }
 
     @Test
+    @Disabled
     public void getAllTodos() {
 
         assertNotNull(sut.getAllTodos());
@@ -62,11 +69,12 @@ class DatabaseHandlerTest {
     }
 
     @Test
+    @Disabled
     public void getUserIntIndex() {
         // arrange
-        String expected = "Bremmster";
+        String expected = "Default";
         // act
-        User actual = sut.readUserByIndex(2);
+        User actual = sut.readUserByIndex(1);
         // assert
         assertEquals(expected, actual.getName());
 

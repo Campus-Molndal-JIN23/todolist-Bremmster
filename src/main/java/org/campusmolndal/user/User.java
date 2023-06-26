@@ -10,7 +10,7 @@ public class User {
 
     public User(String name) {
         if (name.equals("")) {
-            this.name = "Default user";
+            this.name = "Default username";
         } else {
             this.name = name;
         }

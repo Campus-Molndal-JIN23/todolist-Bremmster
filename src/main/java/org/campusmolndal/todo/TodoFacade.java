@@ -6,7 +6,6 @@ import org.campusmolndal.user.User;
 import java.util.List;
 
 public class TodoFacade {
-    // hanterar objekten och databasen
     private final DatabaseHandler db;
 
     public TodoFacade() {
@@ -35,16 +34,16 @@ public class TodoFacade {
     }
 
     public List<Todo> list() {
-        List<Todo> todos = null;
+        List<Todo> todos;
         todos = db.getAllTodos();
         return todos;
     }
+
     public List<Todo> listUsersTodos(User currentUser) {
-        List<Todo> todos = null;
+        List<Todo> todos;
         todos = db.getAllUserTodos(currentUser);
         return todos;
     }
-
 
 
     public void markDone(Todo todo) {

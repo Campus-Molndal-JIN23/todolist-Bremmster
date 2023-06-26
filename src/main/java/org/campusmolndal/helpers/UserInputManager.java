@@ -1,6 +1,5 @@
 package org.campusmolndal.helpers;
 
-import org.campusmolndal.helpers.TextManager;
 
 import java.util.Scanner;
 
@@ -34,6 +33,5 @@ public class UserInputManager {
 
     public static String getString() {
         return scanner.nextLine();
-        // todo try catch
     }
 }
