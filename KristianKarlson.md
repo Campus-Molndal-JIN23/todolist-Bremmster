@@ -1,12 +1,12 @@
 # Ditt namn
-Kristian Karlson
-## Egna reflektioner
+Kristian Karlson JIN VT23-HT24
 
 ## Projektet
-En applikation för att hålla reda på att göra uppgifter, kopplade till användare. 
 ### Beskrivning av projektet
+En applikation för att hålla reda på att göra uppgifter, kopplade till användare. 
 
 ### Vad du har gjort
+Ett konsolprogram för att hålla koll på att göra uppgifter och användare knutet till objekten 
 
 ## Planering
 Grovplanering
@@ -21,19 +21,21 @@ flowchart LR
 ### Lösningsförslag innan uppgiften påbörjas
 
 #### Skisser (exempelvis)
- todo sekvensdiagram av application ??? och databas. Ta med objekt
-
-classdiagram med hjälpklassena som pekar på application
+Första lösningsidé
+``` mermaid
+sequenceDiagram
+    Application->>+Facad: Todo objekt, tomt eller uppdaterat
+    Facad->>+Databas: objekt
+    Databas->>-Facad: objekt
+    Facad->>-Application: objekt
+```
 
 #### Hur du tänker försöka lösa uppgiften.(exempelvis)
+Skapa separata klasser för att ta emot användarkommandon och för att skriva ut text.
+I första hand använd objekt till allt.
 
-#### Pseudokod.(exempelvis)
-
-#### Diagram.(exempelvis)
-
-### Jira/Trello/Github Project och projekthantering enligt Scrum/Kanban
-
-klipp in bild på board
+### Github Project och projekthantering enligt Scrum/Kanban
+![Kanban](assets/images/Kanban_screenshot_20230626_133957.png)  
 
 ## Arbetet och dess genomförande
 
@@ -65,12 +67,9 @@ Scanner finns bara i en klass, lätt att kontrollera beteendet. All text finns p
 Det finns några tester som egentligen inte säger jättemycket om hur applikationen fungerar. 
 Ganska många av testerna är skriva efter koden.
 
-
 ### Vad har du lärt dig
 Hur man skapar en CI pipe. Planerat och genomfört ett projekt på egen hand.
 Reflekterat kring metodiken HTDF (Hacka tills det funkar) och sen skriva tester, Kontra TDD där testerna ska skapas före koden.
-
-
 
 ### Vad hade ni gjort annorlunda om ni gjort om projektet
 Börjat med att skapa CI pipe. Börjat skriva test före koden, det skulle sparat tid vid refactoring. Jag visste med mig från börja att ambitionsnivån var VG skulle skrivit appen mot de kriterier direkt och implementerande av user i applikationen. 

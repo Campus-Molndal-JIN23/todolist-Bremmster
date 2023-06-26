@@ -135,8 +135,8 @@ public class DatabaseHandler {
         }
     }
 
-    private List<Todo> getTodos(PreparedStatement preparedStatement) throws SQLException { // KK
-        // Used by all the sql query, adds result to list. If nothing is found return null
+    private List<Todo> getTodos(PreparedStatement preparedStatement) throws SQLException {
+        // Used by all the sql query that returns lists If nothing is found return null
         List<Todo> todos = new ArrayList<>();
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
@@ -193,7 +193,7 @@ public class DatabaseHandler {
 
     }
 
-    private List<User> getUsers(PreparedStatement preparedStatement) throws SQLException { // KK
+    private List<User> getUsers(PreparedStatement preparedStatement) throws SQLException {
         // Used by all the sql query, adds result to list. If nothing is found return null
         List<User> users = new ArrayList<>();
         ResultSet resultSet = preparedStatement.executeQuery();
