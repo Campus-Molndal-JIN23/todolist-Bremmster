@@ -16,7 +16,7 @@
     * 3.2. [Funktioner som ska finnas för Godkänt samt Väl Godkänt](#FunktionersomskafinnasfrGodkntsamtVlGodknt)
         * 3.2.1. [CRUD metoder](#CRUDmetoder)
         * 3.2.2. [Egenskaper varje TODO ska ha](#EgenskapervarjeTODOskaha)
-        * 3.2.3. [Egenskaper varje User ska ha](#EgenskapervarjeUserskaha)
+        * 3.2.3. [Egenskaper varje org.campusmolndal.user.User ska ha](#EgenskapervarjeUserskaha)
 * 4. [Betygskrav](#Betygskrav)
     * 4.1. [Projektet skall fungera som avsett av utbildaren, vid oklarheter fråga!](#Projektetskallfungerasomavsettavutbildarenvidoklarheterfrga)
     * 4.1. [Grundläggande Krav](#GrundlggandeKrav)
@@ -87,7 +87,7 @@ En TODO applikation som kan:
     - [x] Uppdatera texten
     - [x] Uppdatera om en todo är klar eller inte
 - [x] Radera TODO från er databas
-- Skapa en användare
+- [x] Skapa en användare
 - Visa alla användare
 - Visa en enskild användare
 - Uppdatera en användare
@@ -102,8 +102,8 @@ Förväntad funktionalitet:
 * [ ] Fullt fungerande mockning av beroenden i era tester.
 * [x] Fullt fungerande tester genom CI på Github
 * [x]  JavaFX (frivilligt)
-* [x] org.campusmolndal.todo.Todo ska existera i en databas, antingen MongoDB eller SQLite.
-* [x] Ni ska använda JUnit5, Mockito I Java.
+* [x] Todo ska existera i en databas, antingen MongoDB eller SQLite.
+* [ ] Ni ska använda JUnit5, Mockito I Java.
 * [x] Ni ska använda Maven för att bygga ert projekt.
 * [x] Ni ska använda Github Actions för att testa ert projekt.
 
@@ -126,7 +126,7 @@ Skapa en TODO applikation som kan hantera TODO. Ni ska kunna skapa, läsa ut, re
     <tr>
         <td>Class namn</td>
         <td>org.campusmolndal.todo.Todo</td>
-        <td>User</td>
+        <td>org.campusmolndal.user.User</td>
     </tr>
 	<tr>
 		<td>Create</td>
@@ -164,7 +164,7 @@ Skapa en TODO applikation som kan hantera TODO. Ni ska kunna skapa, läsa ut, re
 
 Ni får addera mer fält om ni vill.
 
-####  3.2.3. <a name='EgenskapervarjeUserskaha'></a>Egenskaper varje User ska ha
+####  3.2.3. <a name='EgenskapervarjeUserskaha'></a>Egenskaper varje org.campusmolndal.user.User ska ha
 
 - `id` (unikt id på varje användare)
 - `name` (Namn på användaren)
@@ -222,12 +222,12 @@ _Möts inte detta kriteriet så är man underkänd per automatik!_
     <tr>
         <td>Automatiska tester på</td>
         <td>Todo klassen</td>
-        <td>User klassen</td>
+        <td>org.campusmolndal.user.User klassen</td>
     </tr>
     <tr>
         <td>Mocka bort externa beroenden (ex databas)</td>
         <td>oTodo klassen</td>
-        <td>User klassen</td>
+        <td>org.campusmolndal.user.User klassen</td>
     </tr>
     <tr>
         <td>Fungerande gränssnitt för att hantera</td>

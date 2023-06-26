@@ -1,8 +1,10 @@
-package org.campusmolndal.todo;
+package org.campusmolndal;
 
+import org.campusmolndal.DatabaseHandler;
 import org.campusmolndal.todo.Todo;
-import org.campusmolndal.todo.TodoDatabase;
+import org.campusmolndal.user.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
@@ -10,21 +12,25 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ *  Test in the production database, all test should be disabled
+ */
 
-class TodoDatabaseTest {
+class DatabaseHandlerTest {
 
-    private TodoDatabase sut;
+    private DatabaseHandler sut;
 
 
     @BeforeEach
-    void setUp() throws SQLException {
-        sut = new TodoDatabase();
+    void setUp() {
+        sut = DatabaseHandler.getInstance();
     }
 
     @Test
+    @Disabled
     public void readTodoByInt() {
         // arrange
-        Todo expected = new Todo(1, "Test text", 0, 0);
+        Todo expected = new Todo(1, "Test text", 0, 1);
         // act
         Todo actual;
 
@@ -38,9 +44,10 @@ class TodoDatabaseTest {
     }
 
     @Test
+    @Disabled
     public void readTodoByText() {
         // arrange
-        Todo expected = new Todo(1, "Test text", 0, 0);
+        Todo expected = new Todo(1, "Test text", 0, 1);
         // act
         Todo actual;
 
@@ -54,9 +61,22 @@ class TodoDatabaseTest {
     }
 
     @Test
+    @Disabled
     public void getAllTodos() {
 
         assertNotNull(sut.getAllTodos());
+
+    }
+
+    @Test
+    @Disabled
+    public void getUserIntIndex() {
+        // arrange
+        String expected = "Default";
+        // act
+        User actual = sut.readUserByIndex(1);
+        // assert
+        assertEquals(expected, actual.getName());
 
     }
 

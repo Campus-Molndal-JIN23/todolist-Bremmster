@@ -1,6 +1,21 @@
+package org.campusmolndal.helpers;
+
+import org.campusmolndal.user.User;
+
 public class TextManager {
 
 
+    public static void userNewName() {
+        System.out.print("Set username: ");
+    }
+
+    public static void userNewAge() {
+        System.out.print("Set user age: ");
+    }
+
+    public static void notValidData() {
+        System.out.println("Sorry i wont allow that");
+    }
 
     public void welcome() {
         System.out.println("Welcome to todo list app");
@@ -17,29 +32,31 @@ public class TextManager {
         System.out.print("Enter a option: ");
     }
 
-    public static void todoMenu() {
+    public static void todoMenu(User currentUser) {
         System.out.println("+---------------------------------------+");
-        System.out.println("| TODO                                  |");
+        System.out.println("| TODO | Current user: " + currentUser.getName());
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Create a todo                      |");
         System.out.println("| 2) Read a todo                        |");
         System.out.println("| 3) Update a todo                      |");
         System.out.println("| 4) Delete a todo                      |");
         System.out.println("| 5) List all todo                      |");
-        System.out.println("| 5) Change user                        |");
+        System.out.println("| 6) List current users todos           |");
+        System.out.println("| 7) Change user                        |");
         System.out.println("| 9) goto overhead menu                 |");
         System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");
     }
 
-    public static void updateMenu() {
+    public static void updateTodoMenu(User currentUser) {
         System.out.println("+---------------------------------------+");
-        System.out.println("| Update todo                           |");
+        System.out.println("| Update todo | Current user: " + currentUser.getName());
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Toggle done/ not done              |");
         System.out.println("| 2) Change text                        |");
-        System.out.println("| 3) Assign to other user               |");
+        System.out.println("| 3) Assign to current user               |");
         System.out.println("| 9) goto overhead menu                 |");
+        System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");
     }
 
@@ -58,17 +75,33 @@ public class TextManager {
         System.out.println("Not a valid choice. Better luck next time");
     }
     public static void thisDontExist() {
-        System.out.println("No todo with that index");
+        System.out.println("Nothing with that index");
+    }
+    public static void indexOfUser(String msg) {
+        System.out.println("index of user to: " + msg);
     }
 
-    public void userMenu() {
+    public static void  changeUserSelectId() {
+        System.out.println("Change user select id: ");
+    }
+
+    public static void userMenu() {
         System.out.println("+---------------------------------------+");
         System.out.println("| User                                  |");
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Create a user                      |");
-        System.out.println("| 2) Update username                    |");
-        System.out.println("| 3) Search for user                    |");
-        System.out.println("| 4) List all users                     |");
+        System.out.println("| 2) Update user                        |");
+        System.out.println("| 3) List all users                     |");
+        System.out.println("| 9) goto overhead menu                 |");
+        System.out.println("+---------------------------------------+");
+        System.out.print("Enter a option: ");
+    }
+    public static void updateUserMenu(User currentUser) {
+        System.out.println("+---------------------------------------+");
+        System.out.println("| Update user | Current user: " + currentUser.getName());
+        System.out.println("+---------------------------------------+");
+        System.out.println("| 1) Update name                        |");
+        System.out.println("| 2) Update age                         |");
         System.out.println("| 9) goto overhead menu                 |");
         System.out.println("+---------------------------------------+");
         System.out.print("Enter a option: ");

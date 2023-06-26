@@ -1,21 +1,24 @@
 package org.campusmolndal.todo;
 
+import org.campusmolndal.DatabaseHandler;
+import org.campusmolndal.user.User;
+
 import java.util.List;
 
 public class TodoFacade {
-    // hanterar objekten och databasen
-    private final TodoDatabase db;
+    private final DatabaseHandler db;
 
     public TodoFacade() {
-        this.db = new TodoDatabase();
+        this.db = DatabaseHandler.getInstance();
     }
 
-    public TodoFacade(TodoDatabase db) { // this constructor exists to enable testing
+    public TodoFacade(DatabaseHandler db) {
+        // this constructor exists to enable testing
         this.db = db;
     }
 
-    public Todo createTodo(Todo todo) {
-        db.createTodo(todo);
+    public Todo createTodo(Todo todo, User currentUser) {
+        db.createTodo(todo, currentUser);
         return searchTodoByText(todo);
     }
 
@@ -31,8 +34,14 @@ public class TodoFacade {
     }
 
     public List<Todo> list() {
-        List<Todo> todos = null;
+        List<Todo> todos;
         todos = db.getAllTodos();
+        return todos;
+    }
+
+    public List<Todo> listUsersTodos(User currentUser) {
+        List<Todo> todos;
+        todos = db.getAllUserTodos(currentUser);
         return todos;
     }
 
@@ -50,9 +59,7 @@ public class TodoFacade {
     }
 
     private void writeTodoChanges(Todo todo) {
-
-        db.updateTodo(todo);
-
+        boolean hereToMakeATestPossible = db.updateTodo(todo);
     }
 
     public void deleteTodo(int index) {
@@ -61,6 +68,8 @@ public class TodoFacade {
     }
 
 
-    public void assignToUser() {
+    public void assignToUser(Todo todo, User currentUser) {
+        todo.setAssignedTo(currentUser.getId());
+        writeTodoChanges(todo);
     }
 }

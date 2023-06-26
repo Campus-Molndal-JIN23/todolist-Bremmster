@@ -1,4 +1,6 @@
-import java.util.InputMismatchException;
+package org.campusmolndal.helpers;
+
+
 import java.util.Scanner;
 
 public class UserInputManager {
@@ -31,6 +33,5 @@ public class UserInputManager {
 
     public static String getString() {
         return scanner.nextLine();
-        // todo try catch
     }
 }
