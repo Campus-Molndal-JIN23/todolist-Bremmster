@@ -20,7 +20,7 @@ public class UserFacade {
 
     public User createUser(User user) {
         db.createUser(user);
-        return searchUserByName(user);
+        return db.readUserByIndex(user);
     }
 
     private User searchUserByName(User user) {

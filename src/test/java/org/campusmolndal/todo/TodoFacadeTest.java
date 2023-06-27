@@ -3,7 +3,6 @@ package org.campusmolndal.todo;
 import org.campusmolndal.DatabaseHandler;
 import org.campusmolndal.user.User;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -90,7 +89,7 @@ class TodoFacadeTest {
     }
     @Test
     void testUserList() {
-        List<Todo> expected = sut.listUsersTodos(new User(1, "current", 1));
+        List<Todo> expected = sut.listUserTodos(new User(1, "current", 1));
         assertNotNull(expected);
     }
 

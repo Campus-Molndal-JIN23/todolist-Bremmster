@@ -72,7 +72,7 @@ public class TextManager {
     }
 
     public static void notValidChoice() {
-        System.out.println("Not a valid choice. Better luck next time");
+        System.out.println("Not a valid choice. Better luck next time \nPlease try again: ");
     }
     public static void thisDontExist() {
         System.out.println("Nothing with that index");
