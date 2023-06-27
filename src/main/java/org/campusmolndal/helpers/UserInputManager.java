@@ -8,13 +8,13 @@ public class UserInputManager {
     private final static Scanner scanner = new Scanner(System.in);
 
 
-    public static int menuChoice(int min, int max) {
+    public static int getLimitedInt(int min, int max) {
         int input = getInt();
         if (input >= min && input <= max || input == 9) {
             return input;
         } else {
             TextManager.notValidChoice();
-            return menuChoice(min, max);
+            return getLimitedInt(min, max);
         }
     }
 

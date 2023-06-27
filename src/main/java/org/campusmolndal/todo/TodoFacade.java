@@ -39,7 +39,7 @@ public class TodoFacade {
         return todos;
     }
 
-    public List<Todo> listUsersTodos(User currentUser) {
+    public List<Todo> listUserTodos(User currentUser) {
         List<Todo> todos;
         todos = db.getAllUserTodos(currentUser);
         return todos;
