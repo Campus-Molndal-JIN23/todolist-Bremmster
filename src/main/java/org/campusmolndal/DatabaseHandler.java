@@ -9,15 +9,15 @@ import java.util.List;
 
 public class DatabaseHandler {
 
+    private static final DatabaseHandler instance = new DatabaseHandler();
     private final Connection connection;
 
-    private static final DatabaseHandler instance = new DatabaseHandler();
-
     // private constructor to avoid client applications using the constructor
-    private DatabaseHandler(){
+    private DatabaseHandler() {
         String dbName = "todo_app_db";
         try {
             this.connection = DriverManager.getConnection("jdbc:sqlite:" + dbName + ".db");
+            createTables();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -27,7 +27,23 @@ public class DatabaseHandler {
         return instance;
     }
 
+    private void createTables() {
 
+        String users = "CREATE TABLE user ( id INTEGER UNIQUE, name TEXT, age INTEGER, PRIMARY KEY( id AUTOINCREMENT) )";
+
+        String todo = "CREATE TABLE todo ( id INTEGER NOT NULL UNIQUE, text TEXT, done INTEGER NOT NULL, assignedTo INTEGER, FOREIGN KEY(assignedTo) REFERENCES user(id), PRIMARY KEY(id AUTOINCREMENT) )";
+
+        try {
+            PreparedStatement createUserTable = connection.prepareStatement(users);
+            createUserTable.execute();
+            PreparedStatement createTodoTable = connection.prepareStatement(todo);
+            createTodoTable.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public void createTodo(Todo todo, User currentUser) {
 
@@ -67,7 +83,7 @@ public class DatabaseHandler {
         String sql = "SELECT * FROM todo WHERE text LIKE ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1,  todo.getText());
+            preparedStatement.setString(1, todo.getText());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             return new Todo(resultSet.getInt("id"),
@@ -122,6 +138,7 @@ public class DatabaseHandler {
             throw new RuntimeException(e);
         }
     }
+
     public List<Todo> getAllUserTodos(User user) {
 
         String sql = "SELECT * FROM todo WHERE assignedTo LIKE ?";
@@ -151,6 +168,7 @@ public class DatabaseHandler {
         }
         return todos;
     }
+
     public void createUser(User user) {
 
         String sql = "INSERT INTO user(name,age) VALUES(?,?)";
