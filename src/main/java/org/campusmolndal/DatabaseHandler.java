@@ -29,15 +29,17 @@ public class DatabaseHandler {
 
     private void createTables() {
 
-        String users = "CREATE TABLE IF NOT EXISTS user ( id INTEGER UNIQUE, name TEXT, age INTEGER, PRIMARY KEY( id AUTOINCREMENT) )";
+        String users = "CREATE TABLE IF NOT EXISTS user ( id INTEGER NOT NULL UNIQUE , name TEXT, age INTEGER, PRIMARY KEY( id AUTOINCREMENT) )";
 
         String todo = "CREATE TABLE IF NOT EXISTS todo ( id INTEGER NOT NULL UNIQUE, text TEXT, done INTEGER NOT NULL, assignedTo INTEGER, FOREIGN KEY(assignedTo) REFERENCES user(id), PRIMARY KEY(id AUTOINCREMENT) )";
 
         try {
             PreparedStatement createUserTable = connection.prepareStatement(users);
             createUserTable.execute();
+            createUserTable.close();
             PreparedStatement createTodoTable = connection.prepareStatement(todo);
             createTodoTable.execute();
+            createTodoTable.close();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
