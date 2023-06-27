@@ -1,5 +1,7 @@
 package org.campusmolndal.helpers;
 
+import org.campusmolndal.todo.Todo;
+import org.campusmolndal.todo.TodoViewer;
 import org.campusmolndal.user.User;
 
 public class TextManager {
@@ -48,9 +50,10 @@ public class TextManager {
         System.out.print("Enter a option: ");
     }
 
-    public static void updateTodoMenu(User currentUser) {
+    public static void updateTodoMenu(User currentUser, Todo todo) {
         System.out.println("+---------------------------------------+");
         System.out.println("| Update todo | Current user: " + currentUser.getName());
+        System.out.print("| current todo: "); TodoViewer.viewTodo(todo);
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Toggle done/ not done              |");
         System.out.println("| 2) Change text                        |");
@@ -72,7 +75,7 @@ public class TextManager {
     }
 
     public static void notValidChoice() {
-        System.out.println("Not a valid choice. Better luck next time");
+        System.out.println("Not a valid choice. Better luck next time \nPlease try again: ");
     }
     public static void thisDontExist() {
         System.out.println("Nothing with that index");
@@ -85,9 +88,9 @@ public class TextManager {
         System.out.println("Change user select id: ");
     }
 
-    public static void userMenu() {
+    public static void userMenu(User currentUser) {
         System.out.println("+---------------------------------------+");
-        System.out.println("| User                                  |");
+        System.out.println("| User | Current user: " + currentUser.getName());
         System.out.println("+---------------------------------------+");
         System.out.println("| 1) Create a user                      |");
         System.out.println("| 2) Update user                        |");

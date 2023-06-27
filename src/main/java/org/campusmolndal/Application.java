@@ -28,7 +28,7 @@ public class Application {
     private void mainMenu() {
         while (true) {
             TextManager.mainMenu();
-            switch (UserInputManager.menuChoice(1, 2)) {
+            switch (UserInputManager.getLimitedInt(1, 2)) {
                 case 1 -> todoMenu();
                 case 2 -> userMenu();
                 case 9 -> System.exit(0);
@@ -39,44 +39,14 @@ public class Application {
     private void todoMenu() {
         while (true) {
             TextManager.todoMenu(currentUser);
-            switch (UserInputManager.menuChoice(1, 7)) {
-                case 1 -> { // Create
-                    TextManager.todoNewText();
-                    Todo todo = new Todo(UserInputManager.getString());
-                    TodoViewer.viewTodo(todoFacade.createTodo(todo, currentUser));
-                }
-                case 2 -> { // Read
-                    TextManager.indexOfTodo("view");
-                    TodoViewer.viewTodo(todoFacade.readTodo(UserInputManager.getInt()));
-                }
-                case 3 -> { // Update
-                    TextManager.indexOfTodo("update");
-                    updateTodo(todoFacade.readTodo(UserInputManager.getInt()));
-                }
-                case 4 -> { // Delete
-                    TextManager.indexOfTodo("delete");
-                    todoFacade.deleteTodo(UserInputManager.getInt());
-                }
-                case 5 -> { // List all tasks
-                    List<Todo> todos = todoFacade.list();
-                    if (todos != null) {
-                        for (Todo todo : todos) {
-                            TodoViewer.viewTodo(todo);
-                        }
-                    }
-                }
-                case 6 -> { // List current user tasks
-                    List<Todo> todos = todoFacade.listUsersTodos(currentUser);
-                    if (todos != null) {
-                        for (Todo todo : todos) {
-                            TodoViewer.viewTodo(todo);
-                        }
-                    }
-                }
-                case 7 -> { // Change user
-                    TextManager.changeUserSelectId();
-                    this.currentUser = userFacade.changeUser(currentUser, UserInputManager.getInt());
-                }
+            switch (UserInputManager.getLimitedInt(1, 7)) {
+                case 1 -> createTodo();
+                case 2 -> readTodo();
+                case 3 -> updateTodo();
+                case 4 -> deleteTodo();
+                case 5 -> listAllTodos(todoFacade.list());
+                case 6 -> listAllTodos(todoFacade.listUserTodos(currentUser)); // List current user tasks
+                case 7 -> changeUser();
                 case 9 -> {
                     return;
                 }
@@ -84,16 +54,46 @@ public class Application {
         }
     }
 
+    private void changeUser() {
+        TextManager.changeUserSelectId();
+        this.currentUser = userFacade.changeUser(currentUser, UserInputManager.getInt());
+    }
+
+    private void listAllTodos(List<Todo> todoFacade) {
+        if (todoFacade != null) {
+            for (Todo todo : todoFacade) {
+                TodoViewer.viewTodo(todo);
+            }
+        }
+    }
+
+    private void deleteTodo() {
+        TextManager.indexOfTodo("delete");
+        todoFacade.deleteTodo(UserInputManager.getInt());
+    }
+
+    private void updateTodo() {
+        TextManager.indexOfTodo("update");
+        updateTodo(todoFacade.readTodo(UserInputManager.getInt()));
+    }
+
+    private void readTodo() {
+        TextManager.indexOfTodo("view");
+        TodoViewer.viewTodo(todoFacade.readTodo(UserInputManager.getInt()));
+    }
+
+    private void createTodo() {
+        TextManager.todoNewText();
+        Todo todo = new Todo(UserInputManager.getString());
+        TodoViewer.viewTodo(todoFacade.createTodo(todo, currentUser));
+    }
+
     private void updateTodo(Todo todo) {
         while (true) {
-            TodoViewer.viewTodo(todo);
-            TextManager.updateTodoMenu(currentUser);
-            switch (UserInputManager.menuChoice(1, 3)) {
-                case 1 -> todoFacade.markDone(todo); // mark done / not done
-                case 2 -> { // change text
-                    TextManager.todoNewText();
-                    todoFacade.changeText(todo, UserInputManager.getString());
-                }
+            TextManager.updateTodoMenu(currentUser, todo);
+            switch (UserInputManager.getLimitedInt(1, 3)) {
+                case 1 -> todoFacade.markDone(todo);
+                case 2 -> changeTodoText(todo);
                 case 3 -> todoFacade.assignToUser(todo, currentUser); // assign to user
                 case 9 -> {
                     return;
@@ -102,32 +102,19 @@ public class Application {
         }
     }
 
+    private void changeTodoText(Todo todo) {
+        TextManager.todoNewText();
+        todoFacade.changeText(todo, UserInputManager.getString());
+    }
+
     private void userMenu() {
         // todo
         while (true) {
-            TextManager.userMenu();
-            switch (UserInputManager.menuChoice(1, 3)) {
-                case 1 -> { // create user
-                    TextManager.userNewName();
-                    User user = new User(UserInputManager.getString());
-                    TextManager.userNewAge();
-                    user.setAge(UserInputManager.getInt());
-
-                    // todo skapa en metod för att lägga till i databasen
-                    UserViewer.viewUser(userFacade.createUser(user));
-                }
-                case 2 -> { // Update user
-                    TextManager.indexOfUser("update"); // todo
-                    updateUser(userFacade.readUser(UserInputManager.getInt()));
-                }
-                case 3 -> { // List users
-                    List<User> users = userFacade.list();
-                    if (users != null) {
-                        for (User user : users) {
-                            UserViewer.viewUser(user);
-                        }
-                    }
-                }
+            TextManager.userMenu(currentUser);
+            switch (UserInputManager.getLimitedInt(1, 3)) {
+                case 1 -> createUser();
+                case 2 -> updateUser();
+                case 3 -> listAllUsers();
                 case 9 -> {
                     return;
                 }
@@ -135,24 +122,57 @@ public class Application {
         }
     }
 
+    private void listAllUsers() {
+        List<User> users = userFacade.list();
+        if (users != null) {
+            for (User user : users) {
+                UserViewer.viewUser(user);
+            }
+        }
+    }
+
+    private void updateUser() {
+        TextManager.indexOfUser("update"); // todo
+        updateUser(userFacade.readUser(UserInputManager.getInt()));
+    }
+
+    private void createUser() {
+        final int MIN = 0;
+        final int MAX = 150;
+
+        TextManager.userNewName();
+        User user = new User(UserInputManager.getString());
+
+        TextManager.userNewAge();
+        user.setAge(UserInputManager.getLimitedInt(MIN, MAX));
+
+        userFacade.createUser(user);
+    }
+
     private void updateUser(User user) {
         while (true) {
             UserViewer.viewUser(user);
             TextManager.updateUserMenu(currentUser);
-            switch (UserInputManager.menuChoice(1, 2)) {
-                case 1 -> { // change name of user
-                    TextManager.userNewName();
-                    userFacade.changeName(user, UserInputManager.getString());
-                }
-                case 2 -> { // change age of user
-                    TextManager.userNewAge();
-                    userFacade.changeAge(user, UserInputManager.getInt());
-                }
+            switch (UserInputManager.getLimitedInt(1, 2)) {
+                case 1 -> changeUserName(user);
+                case 2 -> changeUserAge(user);
                 case 9 -> {
                     return;
                 }
             }
         }
+    }
+
+    private void changeUserAge(User user) {
+        final int MIN = 0;
+        final int MAX = 150;
+        TextManager.userNewAge();
+        userFacade.changeAge(user, UserInputManager.getLimitedInt(MIN, MAX));
+    }
+
+    private void changeUserName(User user) {
+        TextManager.userNewName();
+        userFacade.changeName(user, UserInputManager.getString());
     }
 }
 
