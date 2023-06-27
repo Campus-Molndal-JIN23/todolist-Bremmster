@@ -90,10 +90,9 @@ public class Application {
 
     private void updateTodo(Todo todo) {
         while (true) {
-            TodoViewer.viewTodo(todo);
-            TextManager.updateTodoMenu(currentUser);
+            TextManager.updateTodoMenu(currentUser, todo);
             switch (UserInputManager.getLimitedInt(1, 3)) {
-                case 1 -> todoFacade.markDone(todo); // mark done / not done
+                case 1 -> todoFacade.markDone(todo);
                 case 2 -> changeTodoText(todo);
                 case 3 -> todoFacade.assignToUser(todo, currentUser); // assign to user
                 case 9 -> {
@@ -111,7 +110,7 @@ public class Application {
     private void userMenu() {
         // todo
         while (true) {
-            TextManager.userMenu();
+            TextManager.userMenu(currentUser);
             switch (UserInputManager.getLimitedInt(1, 3)) {
                 case 1 -> createUser();
                 case 2 -> updateUser();
@@ -138,11 +137,16 @@ public class Application {
     }
 
     private void createUser() {
+        final int MIN = 0;
+        final int MAX = 150;
+
         TextManager.userNewName();
         User user = new User(UserInputManager.getString());
 
-        changeUserAge(user);
+        TextManager.userNewAge();
+        user.setAge(UserInputManager.getLimitedInt(MIN, MAX));
 
+        userFacade.createUser(user);
     }
 
     private void updateUser(User user) {

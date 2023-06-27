@@ -1498,6 +1498,7 @@
     <column id="523" parent="507" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DasType>INTEGER|0s</DasType>
+      <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="524" parent="507" name="name">
