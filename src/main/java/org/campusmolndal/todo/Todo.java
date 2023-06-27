@@ -2,8 +2,6 @@ package org.campusmolndal.todo;
 
 import org.campusmolndal.helpers.TextManager;
 
-import java.util.List;
-
 public class Todo {
 
     private int id;

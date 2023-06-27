@@ -1,7 +1,7 @@
 package org.campusmolndal.todo;
 
 import org.campusmolndal.helpers.TextManager;
-import org.campusmolndal.todo.Todo;
+
 
 public class TodoViewer {
 

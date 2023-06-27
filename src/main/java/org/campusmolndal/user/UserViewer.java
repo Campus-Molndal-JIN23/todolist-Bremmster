@@ -1,7 +1,7 @@
 package org.campusmolndal.user;
 
 import org.campusmolndal.helpers.TextManager;
-import org.campusmolndal.user.User;
+
 
 public class UserViewer {
 
