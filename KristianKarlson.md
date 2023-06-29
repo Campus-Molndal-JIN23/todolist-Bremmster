@@ -34,10 +34,10 @@ sequenceDiagram
 Flowchart för menysystemet
 ``` mermaid
 flowchart TD
-    A[Start] --> B(Todo Menu)
-    A --> usr(user Menu)
-    B -->C{User input}
-    C -->|C| D[Todo]
+    A(Start) --> C{Todo Menu}
+    A --> usr{user Menu}
+    
+    C -->|C| D[Create Todo]
     C -->|R| E[Read todo]
     C -->|U| F{Update todo}
     F --> F1[update text]
@@ -46,13 +46,20 @@ flowchart TD
     C --> |D|G[Delete todo]
     C --> |L|H[List todos]
     C --> I[List user todos]
+    usr-->CU[Create user]
+    usr-->SU[Show all users]
+    usr-->UU[Update user]
+    UU-->UC[Change name]
+    UU-->UA[Change age]
 ```
 ``` mermaid
 flowchart TD
-    A[User menu]
-    A-->B[Create user]
-    A-->C[Show all users]
-    A-->E[update user]
+    usr[User menu]
+    usr-->CU[Create user]
+    usr-->SU[Show all users]
+    usr-->UU[Update user]
+    UU-->UC[Change name]
+    UU-->UA[Change age]
 ```
 Databas struktur
 ``` mermaid
